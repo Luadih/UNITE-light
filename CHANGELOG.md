@@ -1,5 +1,12 @@
 ## For more detailed changelogs you can check the github releases page.
 
+[v0.2.0]
+- Parallel Setup
+    - Increased Brightness
+    - Adjusted Lights Contrast value
+- Mir Setup
+    - Introduced Mir Setup
+
 [v0.1.1]
 - Fixed Default Light Positioning
 
