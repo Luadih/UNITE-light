@@ -1,5 +1,0 @@
-[0.1.1]
-- Fixed Default Light Positioning
-
-[0.1.0]
-- Public Test Release
