@@ -12,6 +12,10 @@
         - Disabled HDRI
     - Late Impact Setup
         - Removed
+    - PRO Setups
+        - Introduced PRO Setups
+        - Simplest
+            - Introduced Simplest Setup
 
 [v0.1.1]
 - Fixed Default Light Positioning
