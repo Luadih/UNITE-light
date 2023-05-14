@@ -1,6 +1,8 @@
 ## For more detailed changelogs you can check the github releases page.
 
 [W.I.P]
+- Reset all standalone projects and Template to have the Default Light Position
+
 - Template
     - Disabled Panels Shadow via Compositing Tag
 
