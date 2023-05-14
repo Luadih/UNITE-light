@@ -11,7 +11,7 @@
         - Files moved to EXAMPLEUI
         - Disabled HDRI
     - Late Impact Setup
-        - Removed
+        - Removed 2
 
 [v0.1.1]
 - Fixed Default Light Positioning
