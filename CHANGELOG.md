@@ -1,6 +1,14 @@
 ## For more detailed changelogs you can check the github releases page.
 
 [W.I.P]
+
+- Project
+    - Added "Color Coding.md"
+
+- Build
+    - Added notes inside "Preset Loading" Xpresso
+    - Added Mix Mode Advanced Setting (not to be confused with "Mix With" in older versions)
+
 - Reset all standalone projects and Template to have the Default Light Position
 
 - Template
