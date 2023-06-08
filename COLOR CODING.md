@@ -20,7 +20,7 @@ This is for **notes left in Xpresso** to explain how everything works, they can 
 - BLURPLE : `#8A8AE6`
 This is for a **group of operators needed for a specific function**, they shouldn't need to be modified to introduce a new set. *You can open them by double clicking with SHIFT held.*
 
-## GROUPING COLOR CODES
+## Grouping Color Codes
 
 Some color codes that you can use for **grouping nodes used for one single function**.
 
