@@ -1,5 +1,9 @@
 ## These are used inside Xpressos to explain better how everything works
 
+### FORMATTING
+
+    - If the Xpresso operator name is surrounded by brackets "{}" is to represent they are constants.
+
 ### GLOBAL COLOR CODES
 
     - WHITE : #E6E6E6
