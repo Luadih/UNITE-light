@@ -1,28 +1,28 @@
-## These are used inside Xpressos to explain better how everything works
+# Color Coding / Formatting in Xpressos
 
-### FORMATTING
+## Formatting
 
-- If the Xpresso operator name is surrounded by brackets "{}" is to represent they are constants.
+- If the Xpresso operator name is surrounded by **brackets "{}"** is to represent they are **constants**.
 
-- If the Xpresso operator name is surrounded by square brackets "[]" is to represent they are a group of operators grouped into a function. They may respect the BLURPLE color code, or they may not. Used mainly to improve readibility.
+- If the Xpresso operator name is surrounded by **square brackets "[]"** is to represent they are a **group of operators used for a single function**. They may respect the `BLURPLE` color code, or they may not. *Used mainly to improve readibility.*
 
-### GLOBAL COLOR CODES
+## Global Color Codes
 
 - WHITE : `#E6E6E6`
-These are Data Blocks, they just store data triggered by other functions.
+This is used for **Data Blocks**, they just store data triggered by other functions.
 
 - PURPLE : `#A445CC`
-These are the mainly the menu node, but it can also stand for the main processing nodes.
+This is **used mainly for the menu node**, but it *can* also be for the **main processing operators**.
 
 - YELLOW WITH YELLOW BORDERS : `#FFE500`
-These are notes left in Xpresso to explain how everything works, they can be confused for error nodes so be sure it says "NOTE" and it HAS a yellow border.
+This is for **notes left in Xpresso** to explain how everything works, they can be confused for error nodes so be *sure* **it says "NOTE" and it HAS a yellow border**.
 
 - BLURPLE : `#8A8AE6`
-These are a group of operators needed for a very specific function, they shouldn't need to be modified to introduce a new set. You can open them by double clicking with SHIFT held.
+This is for a **group of operators needed for a specific function**, they shouldn't need to be modified to introduce a new set. *You can open them by double clicking with SHIFT held.*
 
-### GROUPING COLOR CODES
+## GROUPING COLOR CODES
 
-Here are just color codes, for grouping nodes used for the same function.
+Some color codes that you can use for **grouping nodes used for one single function**.
 
 - GREEN : `#45CC45`
 
