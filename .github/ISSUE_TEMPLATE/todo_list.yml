@@ -1,0 +1,30 @@
+name: To-Do
+description: Changes that should be done to UNITE and should be in a list W.I.P
+labels: ["type:todo"]
+body:
+
+- type: textarea
+  id: description
+  attributes:
+    label: Description
+    description: |
+      Description of what is being changed, improved or removed
+    placeholder: |
+      Describe how it is going to be changed, improved or removed and why it should be done
+  validations:
+    required: true
+
+- type: checkboxes
+  id: acknowledgements
+  attributes:
+    label: Acknowledgments
+    description: |
+      Please make sure you are able to tick the items below, so that all parties involved have an easier time.
+      Your issue is very likely to be closed and ignored if these conditions are not met.
+    options:
+    - label: I have written a concise and meaningful title.
+      required: true
+    - label: I have searched the existing issues and this new issue is not a duplicate of any.
+      required: true
+    - label: I am helping with developing UNITE and talked with everyone about this.
+      required: true
