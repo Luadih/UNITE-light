@@ -5,7 +5,7 @@ body:
 - type: markdown
   attributes:
     value: |
-    Fill out the fields below adequately so that we have an easier time responding to your request. Thank you.
+      Fill out the fields below adequately so that we have an easier time responding to your request. Thank you.
 
 - type: textarea
   id: description
