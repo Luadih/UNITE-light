@@ -1,0 +1,25 @@
+name: Bug report
+description: File a bug report
+title: "Bug: <title>"
+labels: ["type:bug"]
+body:
+- type: checkboxes
+  attributes:
+    label: Is there an existing issue for this?
+    description: Please search to see if an issue already exists for the bug you encountered.
+    options:
+    - label: I have searched the existing issues
+      required: true
+- type: textarea
+  attributes:
+    label: Describe the problem
+    description: A clear and concise description of what you're experiencing.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Steps to reproduce
+    description: A clear and concise description of what you're experiencing.
+    placeholder: "Steps to reproduce the behavior"
+  validations:
+    required: false
