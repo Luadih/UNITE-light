@@ -6,9 +6,9 @@ body:
   id: problem-description
   attributes:
     label: Describe the problem
-    placeholder: |
+    description: |
       A clear and concise description of what you're experiencing.
-
+    placeholder: |
       In case you know steps to reproduce the problem also tell us here.
   validations:
     required: true
