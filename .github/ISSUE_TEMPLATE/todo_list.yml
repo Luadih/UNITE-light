@@ -1,5 +1,5 @@
 name: To-Do
-description: Changes that should be done to UNITE and should be in a list W.I.P
+description: Changes that should be done to UNITE and should be worked towards
 labels: ["type:todo"]
 body:
 
