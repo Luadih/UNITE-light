@@ -6,6 +6,9 @@
     - Added "Color Coding.md"
 
 - Build
+    - Infra
+        - Added Build Interface button which now loads every item inside LCollection and PCollection to the Interface (Python)
+        - Added Xpresso for the above to be working automatically, you don't need to add the connections yourself to make the lights or panels switch now!
     - Added notes inside Xpressos
     - Added Mix Mode Advanced Setting (not to be confused with "Mix With" in older versions)
 
