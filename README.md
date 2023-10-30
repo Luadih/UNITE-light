@@ -2,7 +2,7 @@
 
 This is a Lightkit meant for the 3D Program [Cinema4D](https://www.maxon.net/en-us/products/cinema-4d/overview/) and for usage on 3D Text Intros.
 
-**If you have any problem or any request, just create an [issue](https://github.com/Luadih/unite-light/issues/new) for it.**
+**If you have any problem or any request, just create an [issue](https://github.com/Luadih/unite-light/issues/new/choose) for it.**
 
 ## Download
 
