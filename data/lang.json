@@ -1,0 +1,69 @@
+{
+    "en": {
+        "displayName": "English",
+        "values": {
+            "-> HOME": "HOME",
+            "#quickSetup": "Quick Setup",
+            "languageSel": "Language",
+            "loadPresets": "Preset Mode",
+            "presetSelection": "Preset",
+            "#mainSystem": "Custom",
+            "selectLightset": "Lightset Type",
+            "#info": "Information",
+            "currentVersion": "Current Version",
+
+            "-> UNIVERSAL": "UNIVERSAL",
+            "#uni_general": "General",
+            "uni_showReflections": "Reflections",
+            "#uni_lights": "Lights",
+            "uni_lightSelection": "Lights Selected",
+            "uni_lightSeed": "Random Seed",
+            "#uni_panels": "Panels",
+            "uni_panelSelection": "Panels Selected",
+            "uni_panelGI": "Panels Use GI",
+
+            "-> HDRI": "HDRI",
+            "hdri_previewReflection": "Preview Reflection",
+            "hdri_hdriSelection": "HDRI Selected",
+            "hdri_customSelector": "Personal HDRI",
+            "hdri_hdriGI": "HDRI Use GI",
+            "!hdri_custommix": "Custom Mix Options",
+            "hdri_enableCustomMix": "Custom Mix",
+            "hdri_customMixValue": "Mix Strength",
+            "hdri_mixType": "Mix With",
+
+            "-> ADVANCED SETTINGS": "ADVANCED",
+            "*devMode": "Developer Mode",
+            "*hdri.FusionMode": "HDRI Fusion Mode",
+            "*hdri.MixMode": "HDRI Mix Mode",
+
+            "-> DEVELOPER": "DEV",
+            "*dev.buildInterface": "Build Interface",
+            "*dev.changeReleaseDate": "Update Version Number",
+            "*dev.cacheLanguages": "Cache Languages",
+            "!debugShowcase": "Debug Showcase",
+            "*dev.presetOptions": "Preset Options (Memory)",
+            "*dev.lightOptions": "Light Options (Memory)",
+            "*dev.panelOptions": "Panel Options (Memory)",
+            "*dev.hdriOptions": "HDRI Options (Memory)"
+        }
+    },
+    "es": {
+        "displayName": "Español",
+        "values": {
+            "Test": "Ejemplo"
+        }
+    },
+    "pt": {
+        "displayName": "Português",
+        "values": {
+            "Test": "Exemplo"
+        }
+    },
+    "ch": {
+        "displayName": "Chinese",
+        "values": {
+            "Test": "Bing Chilling"
+        }
+    }
+}
