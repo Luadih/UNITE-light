@@ -7,48 +7,38 @@ def err(error):
     print(file + ": " + error)
 
 def essentials():
-    global root
     root = op.GetObject().GetUp().GetUp()
+    if root is None: err("root not found, hierarchy might have been broken"); return
 
-    if root is None:
-        err("root not found, hierarchy might have been broken")
-        return
-
-    global uiNull
     uiNull = root.GetUp()
-
-    if uiNull is None:
-        err("main null not found, hierarchy might have been broken")
-        return
+    if uiNull is None: err("main null not found, hierarchy might have been broken"); return 
+    else: 
+        return uiNull
 
 def main():
-    essentials()
-
+    uiNull = essentials()
     if not uiNull.FindEventNotification(doc, op, c4d.NOTIFY_EVENT_MESSAGE):
         uiNull.AddEventNotification(op, c4d.NOTIFY_EVENT_MESSAGE, 0, c4d.BaseContainer())
 
-# Build Interface Button
-
 def message(msg_type, data):
-    if msg_type == c4d.MSG_NOTIFY_EVENT:
-        event_data = data['event_data']
-        if event_data['msg_id'] == c4d.MSG_DESCRIPTION_COMMAND:
-            desc_id = event_data['msg_data']['id']
-            if desc_id[1].id == 30: # The ID of the User Data
-                changeReleaseDate()
+    if (
+        msg_type == c4d.MSG_NOTIFY_EVENT and
+        data['event_data']['msg_id'] == c4d.MSG_DESCRIPTION_COMMAND and
+        data['event_data']['msg_data']['id'][1].id == 30
+    ):
+        changeReleaseDate()
+
 ## Functions
 def changeReleaseDate():
-    releaseUI = uiNull[c4d.ID_USERDATA, 3]
+    uiNull = essentials()
+    releaseValue = uiNull[c4d.ID_USERDATA, 3]
 
-    dateToday = date.today()
-    dateToday = dateToday.strftime("%Y%m%d")
-    releaseValue = "R" + dateToday
+    today = date.today()
+    dateToday = today.strftime("%Y%m%d")
+    newValue = f"R{dateToday}"
 
-    if releaseUI == releaseValue or releaseUI.find(".") != -1:
-        if releaseUI.find(".") != -1:
-            lastChar = releaseUI[-1]
-            uiNull[c4d.ID_USERDATA, 3] = releaseValue + "." + str(int(lastChar) + 1)
-        else:
-            uiNull[c4d.ID_USERDATA, 3] = releaseValue + ".1"
-    else:
-        uiNull[c4d.ID_USERDATA, 3] = releaseValue
+    if releaseValue == newValue or "." in releaseValue:
+        lastChar = releaseValue[-1] if "." in releaseValue else None
+        newValue = f"{newValue}.{int(lastChar) + 1}" if lastChar else f"{newValue}.1"
+    
+    uiNull[c4d.ID_USERDATA, 3] = newValue
