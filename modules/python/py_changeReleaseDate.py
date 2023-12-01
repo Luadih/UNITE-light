@@ -11,9 +11,7 @@ def essentials():
     if root is None: err("root not found, hierarchy might have been broken"); return
 
     uiNull = root.GetUp()
-    if uiNull is None: err("main null not found, hierarchy might have been broken"); return 
-    else: 
-        return uiNull
+    return uiNull if uiNull is not None else err("main null not found, hierarchy might have been broken"); return 
 
 def main():
     uiNull = essentials()
@@ -28,14 +26,12 @@ def message(msg_type, data):
     ):
         changeReleaseDate()
 
-## Functions
 def changeReleaseDate():
     uiNull = essentials()
     releaseValue = uiNull[c4d.ID_USERDATA, 3]
 
     today = date.today()
-    dateToday = today.strftime("%Y%m%d")
-    newValue = f"R{dateToday}"
+    newValue = today.strftime("R%Y%m%d")
 
     if releaseValue == newValue or "." in releaseValue:
         lastChar = releaseValue[-1] if "." in releaseValue else None

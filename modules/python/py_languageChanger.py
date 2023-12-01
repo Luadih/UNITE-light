@@ -7,44 +7,31 @@ def err(error):
     print(file + ": " + error)
 
 def essentials():
-    global root
     root = op.GetObject().GetUp().GetUp()
+    if root is None: err("root not found, hierarchy might have been broken"); return
 
-    if root is None:
-        err("root not found, hierarchy might have been broken")
-        return
-
-    global uiNull
     uiNull = root.GetUp()
+    if uiNull is None: err("main null not found, hierarchy might have been broken"); return
 
-    if uiNull is None:
-        err("main null not found, hierarchy might have been broken")
-        return
+    dictNull = doc.SearchObject("py_buildDictionary")
+    if uiNull is None: err("dictionary null doesn't exist"); return
+
+    return uiNull, dictNull
 
 def mainVar():
-    global langNull
     langNull = op.GetObject()
+    if langNull is None: err("what the fuck happened"); return
 
-    if langNull is None:
-        err("what the fuck happened")
-        return
-
-    global languageSel
     languageSel = 31
 
-    global languageSelGroup
-    languageSelGroup = 1
+    return langNull, languageSel
 
 
 def main():
-    essentials()
-    mainVar()
-
-    changeLanguage()
+    uiNull = essentials()[0]
 
     if not uiNull.FindEventNotification(doc, op, c4d.NOTIFY_EVENT_MESSAGE):
         uiNull.AddEventNotification(op, c4d.NOTIFY_EVENT_MESSAGE, 0, c4d.BaseContainer())
-
 
 
 def message(msg_type, data):
@@ -55,74 +42,67 @@ def message(msg_type, data):
     ):
         cacheLang()
 
+    elif (
+        msg_type == c4d.MSG_NOTIFY_EVENT and
+        data['event_data']['msg_id'] == c4d.MSG_DESCRIPTION_POSTSETPARAMETER and
+        data['event_data']['msg_data']['descid'][1].id == 31
+    ):
+        changeLanguage()
+        
 def cacheLang():
+    langNull, languageSel = mainVar()
     projectDir = doc.GetDocumentPath()
-    try:
-        f = open(projectDir + "/data/lang.json","r", encoding="utf-8")
-    except EnvironmentError:
-        err("lang file doesn't exist, you may be in another directory or data folder may have been removed")
-        return
+    try: file = open(projectDir + "/data/lang.json","r", encoding="utf-8")
+    except EnvironmentError: err("lang file doesn't exist, you may be in another directory or data folder may have been removed"); return
 
-    try:
-        fopen = json.load(f)
-    except json.JSONDecodeError:
-        err("lang json file is not structured correctly")
-        return
+    try: openFile = json.load(file)
+    except json.JSONDecodeError: err("lang json file is not structured correctly"); return
 
-    count = len(fopen)
-    if count == 0:
-        err("there are no languages in the language file")
-        return
+    count = len(openFile)
+    if count == 0: err("there are no languages in the language file"); return
 
-    langNull[c4d.ID_USERDATA, 1] = str(fopen)
+    langNull[c4d.ID_USERDATA, 1] = json.dumps(openFile, indent=4)
+    file.close()
 
-    f.close()
+    langDict = eval(langNull[c4d.ID_USERDATA, 1])
 
-    d = eval(langNull[c4d.ID_USERDATA, 1])
+    print(f"UN: Cached {len(langDict)} languages to UNITE")
 
-    print("UN: Cached " + str(len(d)) + " languages to UNITE")
+    loadLanguagesToUi(languageSel, langDict)
 
-    ## Loading to Interface
+def loadLanguagesToUi(controllerId, langDict):
+    uiNull = essentials()[0]
+    count = len(langDict)
+    controllerValue = uiNull[c4d.ID_USERDATA, controllerId]
 
-    # Create and initialize user data container for an integer for the children
-    bc = c4d.GetCustomDatatypeDefault(c4d.DTYPE_LONG)
+    udId, bc = accessDictionary_by_UdID(controllerId, uiNull)
 
-    bc.SetString(c4d.DESC_NAME, "languageSel")
-    bc.SetInt32(c4d.DESC_CUSTOMGUI, c4d.CUSTOMGUI_CYCLE)
-    bc.SetInt32(c4d.DESC_MIN, 0)
-    bc.SetInt32(c4d.DESC_MAX, count-1)
-    parentGroup = c4d.DescID(c4d.DescLevel(c4d.ID_USERDATA), c4d.DescLevel(languageSelGroup, c4d.DTYPE_GROUP, 0))
-    bc.SetData(c4d.DESC_PARENTGROUP, parentGroup)
+    cycleCont = c4d.BaseContainer()
+    for index, langKey in enumerate(langDict.keys()):
+        langName = langDict[langKey]["displayName"]
+        cycleCont.SetString(index, langName)
 
-    # Filling options
-    cycle = c4d.BaseContainer()
-    for index, lang_key in enumerate(d.keys()):
-        langName = d[lang_key]["displayName"]
-        cycle.SetString(index, langName)
+    if controllerValue > count - 1: uiNull[c4d.ID_USERDATA, controllerId] = 0
 
-    # Reset the value so it isn't left blank
-    if uiNull[c4d.ID_USERDATA, languageSel] > count - 1:
-        uiNull[c4d.ID_USERDATA, languageSel] = 0
-
-    bc.SetContainer(c4d.DESC_CYCLE, cycle)
-    # Set container for children user data cycle parameter
-    uiNull.SetUserDataContainer([c4d.ID_USERDATA,languageSel], bc)
+    bc[c4d.DESC_CYCLE] = cycleCont
+    uiNull.SetUserDataContainer(udId, bc)
 
 def changeLanguage():
-    uNull = uiNull
+    uiNull = essentials()[0]
+    langNull, languageSel = mainVar()
     langData = eval(langNull[c4d.ID_USERDATA, 1])
-    activeLang = list(langData)[uNull[c4d.ID_USERDATA, languageSel]]
+    activeLang = list(langData)[uiNull[c4d.ID_USERDATA, languageSel]]
     langValues = langData[activeLang]["values"]
-    nullBc = uNull.GetUserDataContainer()
+    nullBc = uiNull.GetUserDataContainer()
 
-    # Collect modifications in a list
     modifications = []
 
     for langDictName in langValues:
         for udId, bc in nullBc:
             udName = bc.GetString(c4d.DESC_NAME)
             udsName = bc.GetString(c4d.DESC_SHORT_NAME)
-            idValue = udId[1].id
+
+            if udName != langDictName and udsName != langDictName: continue
 
             if udId[1].dtype in [11]:
                 udDefName = udsName
@@ -134,7 +114,15 @@ def changeLanguage():
             if udDefName == langDictName:
                 modifications.append((udId, nameSpace, str(langValues[langDictName]), bc))
 
-    # Apply modifications outside the loop
     for udId, key, value, container in modifications:
         container[key] = value
-        uNull.SetUserDataContainer(udId, container)
+        uiNull.SetUserDataContainer(udId, container)
+
+def accessDictionary_by_UdID(userdataid, directory):
+    dictNull = essentials()[1]
+    userData = directory.GetUserDataContainer()
+    userDataDict = eval(dictNull[c4d.ID_USERDATA, 1])
+
+    udId, bc = userData[userDataDict[userdataid]]
+
+    return udId, bc
