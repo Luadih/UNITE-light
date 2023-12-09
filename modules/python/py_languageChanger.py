@@ -33,13 +33,12 @@ def main():
     if not uiNull.FindEventNotification(doc, op, c4d.NOTIFY_EVENT_MESSAGE):
         uiNull.AddEventNotification(op, c4d.NOTIFY_EVENT_MESSAGE, 0, c4d.BaseContainer())
 
-
 def message(msg_type, data):
     if (
         msg_type == c4d.MSG_NOTIFY_EVENT and
         data['event_data']['msg_id'] == c4d.MSG_DESCRIPTION_COMMAND and
         data['event_data']['msg_data']['id'][1].id == 33
-    ):
+    ):  
         cacheLang()
 
     elif (
@@ -57,12 +56,13 @@ def cacheLang():
 
     try: openFile = json.load(file)
     except json.JSONDecodeError: err("lang json file is not structured correctly"); return
+    file.close()
 
     count = len(openFile)
     if count == 0: err("there are no languages in the language file"); return
 
-    langNull[c4d.ID_USERDATA, 1] = json.dumps(openFile, indent=4)
-    file.close()
+    cacheData = usePseudoVariables(openFile)
+    langNull[c4d.ID_USERDATA, 1] = json.dumps(cacheData, indent=4, ensure_ascii=False)
 
     langDict = eval(langNull[c4d.ID_USERDATA, 1])
 
@@ -92,31 +92,63 @@ def changeLanguage():
     langNull, languageSel = mainVar()
     langData = eval(langNull[c4d.ID_USERDATA, 1])
     activeLang = list(langData)[uiNull[c4d.ID_USERDATA, languageSel]]
-    langValues = langData[activeLang]["values"]
+    langDisplay = langData[activeLang]["displayName"]
+
+    interfaceStringsExist = True
+    valueStringsExist = True
+
+    try: interfaceStrings = langData[activeLang]["strings"]["interface"]
+    except: interfaceStringsExist = False
+
+    try: valueStrings = langData[activeLang]["strings"]["values"] 
+    except: valueStringsExist = False
+
+    if interfaceStringsExist == False and valueStringsExist == False:
+        err(f"Language '{langDisplay}' was made using the wrong format")
+        return
+
     nullBc = uiNull.GetUserDataContainer()
 
-    modifications = []
+    if interfaceStringsExist:
+        interfaceChanges = []
 
-    for langDictName in langValues:
-        for udId, bc in nullBc:
-            udName = bc.GetString(c4d.DESC_NAME)
-            udsName = bc.GetString(c4d.DESC_SHORT_NAME)
+        for key in interfaceStrings:
+            for udId, bc in nullBc:
+                udName = bc.GetString(c4d.DESC_NAME)
+                udsName = bc.GetString(c4d.DESC_SHORT_NAME)
 
-            if udName != langDictName and udsName != langDictName: continue
+                if udName != key and udsName != key: continue
 
-            if udId[1].dtype in [11]:
-                udDefName = udsName
-                nameSpace = c4d.DESC_NAME
-            else:
-                udDefName = udName
-                nameSpace = c4d.DESC_SHORT_NAME
+                if udId[1].dtype in [11] or udId[1].id in [21, 25]:
+                    udDefName = udsName
+                    nameSpace = c4d.DESC_NAME
+                else:
+                    udDefName = udName
+                    nameSpace = c4d.DESC_SHORT_NAME
 
-            if udDefName == langDictName:
-                modifications.append((udId, nameSpace, str(langValues[langDictName]), bc))
+                if udDefName == key:
+                    interfaceChanges.append((udId, nameSpace, str(interfaceStrings[key]), bc))
 
-    for udId, key, value, container in modifications:
-        container[key] = value
-        uiNull.SetUserDataContainer(udId, container)
+        for udId, key, value, container in interfaceChanges:
+            container[key] = value
+            uiNull.SetUserDataContainer(udId, container)
+
+    if valueStringsExist:
+        valueChanges = []
+
+        for key, value in valueStrings.items():
+            udId, bc = accessDictionary_by_UdID(int(key), uiNull)
+            valueChanges.append((value, udId, bc))
+
+        for values, udId, container in valueChanges:
+            containerValues = container[14]
+            for index, name in values.items():
+                containerValues.SetString(int(index), name)
+
+            container.SetContainer(c4d.DESC_CYCLE, containerValues)
+
+            uiNull.SetUserDataContainer(udId, container)
+
 
 def accessDictionary_by_UdID(userdataid, directory):
     dictNull = essentials()[1]
@@ -126,3 +158,38 @@ def accessDictionary_by_UdID(userdataid, directory):
     udId, bc = userData[userDataDict[userdataid]]
 
     return udId, bc
+
+def usePseudoVariables(jsonFile):
+    def replaceVars(jsonFile, language, stringGroup, vars):
+        stringsCont = jsonFile[language]["strings"][stringGroup]
+        stringMemory = []
+        valueChanges = []
+
+        for data in stringsCont:
+            stringMemory.append((data, stringsCont[data]))
+
+        for index, data in enumerate(stringMemory):
+            if any(x in list(vars) for x in (data[1].values() if isinstance(data[1], dict) else [data[1]])):
+                temp = str(data[1])
+                for var in vars:
+                    temp = temp.replace(var, vars[var])
+
+                valueChanges.append((stringMemory[index][0], eval(temp)))
+                
+        for key, content in valueChanges:
+            stringsCont[key] = content
+    
+    languages = list(jsonFile)
+
+    for language in languages:
+        try: translationGroups = list(jsonFile[language]["strings"])
+        except: err(f"Language {language} doesn't have any translation strings")
+
+        try:
+            vars = jsonFile[language]["vars"]
+            for group in translationGroups:
+                replaceVars(jsonFile, language, group, vars)
+        except KeyError:
+            err(f"Language {language} doesn't have variables (Skipping)")
+
+    return jsonFile
