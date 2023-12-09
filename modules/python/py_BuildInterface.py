@@ -81,7 +81,7 @@ def populateOptions(options, controlId, noneSelection, elementType, cacheList_ID
     elif controlValue > count - 1 and controlValue != 999:
         uiNull[c4d.ID_USERDATA, controlId] = 0
 
-    print(f"UN: Added {count} elements from {options.GetName()} to User Interface")
+    print("UN: Added %s elements from %s to User Interface" % (count, options.GetName()))
 
     createLinks(cacheList_ID, children, count, uiNull)
 
@@ -127,7 +127,7 @@ def createMemory(nullName, linkobj): # Creates objects to use as memory
     matTag.SetLayerObject(memLayerobj)
     nullObj.InsertTag(matTag)
     nullObj.InsertUnderLast(hdriCollection) # Inserts the object
-    print(f"UN: Added HDRI: '{nullName}' to memory")
+    print("UN: Added HDRI: '%s' to memory" % nullName)
 
 def clearMemory(): # Removes all children of hdriMemNull (clearing memory)
     hdriMemNull = mainVar()[1]

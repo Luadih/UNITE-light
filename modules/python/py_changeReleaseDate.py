@@ -35,6 +35,7 @@ def changeReleaseDate():
 
     if releaseValue == newValue or "." in releaseValue:
         lastChar = releaseValue[-1] if "." in releaseValue else None
-        newValue = f"{newValue}.{int(lastChar) + 1}" if lastChar else f"{newValue}.1"
+        newValueRevisions = "%(version)s.%(revision)s" % {"version": newValue, "revision": int(lastChar) + 1}
+        newValue = newValueRevisions if lastChar else ("%s.1" % newValue)
     
     uiNull[c4d.ID_USERDATA, 3] = newValue

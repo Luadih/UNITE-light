@@ -53,6 +53,7 @@ def cacheLang():
     projectDir = doc.GetDocumentPath()
     try: file = open(projectDir + "/data/lang.json","r", encoding="utf-8")
     except EnvironmentError: err("lang file doesn't exist, you may be in another directory or data folder may have been removed"); return
+    except TypeError: err("the function 'open' in Python triggered a TypeError, update C4D to at least R23"); return
 
     try: openFile = json.load(file)
     except json.JSONDecodeError: err("lang json file is not structured correctly"); return
@@ -66,7 +67,7 @@ def cacheLang():
 
     langDict = eval(langNull[c4d.ID_USERDATA, 1])
 
-    print(f"UN: Cached {len(langDict)} languages to UNITE")
+    print("UN: Cached %s languages to UNITE" % len(langDict))
 
     loadLanguagesToUi(languageSel, langDict)
 
@@ -104,7 +105,7 @@ def changeLanguage():
     except: valueStringsExist = False
 
     if interfaceStringsExist == False and valueStringsExist == False:
-        err(f"Language '{langDisplay}' was made using the wrong format")
+        err("Language '%s' was made using the wrong format" % langDisplay)
         return
 
     nullBc = uiNull.GetUserDataContainer()
@@ -183,13 +184,13 @@ def usePseudoVariables(jsonFile):
 
     for language in languages:
         try: translationGroups = list(jsonFile[language]["strings"])
-        except: err(f"Language {language} doesn't have any translation strings")
+        except: err("Language %s doesn't have any translation strings" % language)
 
         try:
             vars = jsonFile[language]["vars"]
             for group in translationGroups:
                 replaceVars(jsonFile, language, group, vars)
         except KeyError:
-            err(f"Language {language} doesn't have variables (Skipping)")
+            err("Language %s doesn't have variables (Skipping)" % language)
 
     return jsonFile
