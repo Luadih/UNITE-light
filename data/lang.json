@@ -1,69 +1,474 @@
 {
     "en": {
         "displayName": "English",
-        "values": {
-            "-> HOME": "HOME",
-            "#quickSetup": "Quick Setup",
-            "languageSel": "Language",
-            "loadPresets": "Preset Mode",
-            "presetSelection": "Preset",
-            "#mainSystem": "Custom",
-            "selectLightset": "Lightset Type",
-            "#info": "Information",
-            "currentVersion": "Current Version",
-
-            "-> UNIVERSAL": "UNIVERSAL",
-            "#uni_general": "General",
-            "uni_showReflections": "Reflections",
-            "#uni_lights": "Lights",
-            "uni_lightSelection": "Lights Selected",
-            "uni_lightSeed": "Random Seed",
-            "#uni_panels": "Panels",
-            "uni_panelSelection": "Panels Selected",
-            "uni_panelGI": "Panels Use GI",
-
-            "-> HDRI": "HDRI",
-            "hdri_previewReflection": "Preview Reflection",
-            "hdri_hdriSelection": "HDRI Selected",
-            "hdri_customSelector": "Personal HDRI",
-            "hdri_hdriGI": "HDRI Use GI",
-            "!hdri_custommix": "Custom Mix Options",
-            "hdri_enableCustomMix": "Custom Mix",
-            "hdri_customMixValue": "Mix Strength",
-            "hdri_mixType": "Mix With",
-
-            "-> ADVANCED SETTINGS": "ADVANCED",
-            "*devMode": "Developer Mode",
-            "*hdri.FusionMode": "HDRI Fusion Mode",
-            "*hdri.MixMode": "HDRI Mix Mode",
-
-            "-> DEVELOPER": "DEV",
-            "*dev.buildInterface": "Build Interface",
-            "*dev.changeReleaseDate": "Update Version Number",
-            "*dev.cacheLanguages": "Cache Languages",
-            "!debugShowcase": "Debug Showcase",
-            "*dev.presetOptions": "Preset Options (Memory)",
-            "*dev.lightOptions": "Light Options (Memory)",
-            "*dev.panelOptions": "Panel Options (Memory)",
-            "*dev.hdriOptions": "HDRI Options (Memory)"
+        "vars": {
+            "$bool_enabled": "ON",
+            "$bool_disabled": "OFF",
+            "$none": "None"
+        },
+        "strings": {
+            "interface": {
+                "-> HOME": "HOME",
+                "#quickSetup": "Quick Setup",
+                "languageSel": "Language",
+                "loadPresets": "Preset Mode",
+                "presetSelection": "Preset",
+                "#mainSystem": "Custom",
+                "selectLightset": "Lightset Type",
+                "#info": "Information",
+                "currentVersion": "Current Version",
+    
+                "-> UNIVERSAL": "UNIVERSAL",
+                "#uni_general": "General",
+                "uni_showReflections": "Reflections",
+                "#uni_lights": "Lights",
+                "uni_lightSelection": "Lights Selected",
+                "uni_lightSeed": "Random Seed",
+                "#uni_panels": "Panels",
+                "uni_panelSelection": "Panels Selected",
+                "uni_panelGI": "Panels Use GI",
+    
+                "-> HDRI": "HDRI",
+                "hdri_previewReflection": "Preview Reflection",
+                "hdri_hdriSelection": "HDRI Selected",
+                "hdri_customSelector": "Personal HDRI",
+                "hdri_hdriGI": "HDRI Use GI",
+                "!hdri_custommix": "Custom Mix Options",
+                "hdri_enableCustomMix": "Custom Mix",
+                "hdri_customMixValue": "Mix Strength",
+                "hdri_mixType": "Mix With",
+    
+                "-> ADVANCED SETTINGS": "ADVANCED",
+                "*devMode": "Developer Mode",
+                "*hdri.FusionMode": "HDRI Fusion Mode",
+                "*hdri.MixMode": "HDRI Mix Mode",
+    
+                "-> DEVELOPER": "DEV",
+                "*dev.buildInterface": "Build Interface",
+                "*dev.changeReleaseDate": "Update Version Number",
+                "*dev.cacheLanguages": "Cache Languages",
+                "*dev.buildDictionary": "Build ID Dictionary",
+                "!debugShowcase": "Debug Showcase",
+                "*dev.presetOptions": "Preset Options (Memory)",
+                "*dev.lightOptions": "Light Options (Memory)",
+                "*dev.panelOptions": "Panel Options (Memory)",
+                "*dev.hdriOptions": "HDRI Options (Memory)"
+            },
+            "values": { 
+                "54": {
+                    "1": "Active",
+                    "0": "Off"
+                },
+                "20": {
+                    "999": "SELECT A PRESET"
+                },
+                "8": {
+                    "999": "None (DEBUG)"
+                },
+                "14": {
+                    "999": "[Personal/Custom]"
+                },
+                "13": {
+                    "999": "$none"
+                },
+                "17": {
+                    "999": "$none"
+                },
+                "11": {
+                    "0": "None",
+                    "1": "Lights Only",
+                    "2": "Panels Only",
+                    "3": "Both"
+                },
+                "64": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "27": {
+                    "1": "Visible",
+                    "0": "Hidden"
+                },
+                "47": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "24": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "49": {
+                    "0": "Black",
+                    "1": "White"
+                },
+                "4": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "65": {
+                    "2": "+Color",
+                    "1": "Automated",
+                    "0": "Luminance Only"
+                },
+                "2": {
+                    "2": "Color",
+                    "1": "Luminance",
+                    "0": "Both"
+                }
+            }
         }
     },
     "es": {
         "displayName": "Español",
-        "values": {
-            "Test": "Ejemplo"
+        "vars": {
+            "$bool_enabled": "Activado",
+            "$bool_disabled": "Desactivado",
+            "$none": "Ninguno"
+        },
+        "strings": {
+            "interface": {
+                "-> HOME": "INICIO",
+                "#quickSetup": "Configuración Rápida",
+                "languageSel": "Idioma",
+                "loadPresets": "Modo de Preset",
+                "presetSelection": "Preset Seleccionado",
+                "#mainSystem": "Config. Personalizada",
+                "selectLightset": "Tipo de Lightroom",
+                "#info": "Información",
+                "currentVersion": "Versión Actual",
+    
+                "-> UNIVERSAL": "UNIVERSAL",
+                "#uni_general": "General",
+                "uni_showReflections": "Reflejos",
+                "#uni_lights": "Luces",
+                "uni_lightSelection": "Luces Seleccionadas",
+                "uni_lightSeed": "Semilla Aleatoria",
+                "#uni_panels": "Paneles",
+                "uni_panelSelection": "Paneles Seleccionados",
+                "uni_panelGI": "Usar IG en Paneles",
+    
+                "-> HDRI": "HDRI",
+                "hdri_previewReflection": "Vista Previa de Reflejo",
+                "hdri_hdriSelection": "HDRI Seleccionado",
+                "hdri_customSelector": "HDRI Personalizado",
+                "hdri_hdriGI": "Usar IG en HDRI",
+                "!hdri_custommix": "Opciones de Mezcla Personalizada",
+                "hdri_enableCustomMix": "Usar Mezcla Personalizada",
+                "hdri_customMixValue": "Intensidad de Mezcla",
+                "hdri_mixType": "Mezclar con",
+    
+                "-> ADVANCED SETTINGS": "AVANZADO",
+                "*devMode": "Modo Desarrollador",
+                "*hdri.FusionMode": "Modo de Fusión HDRI",
+                "*hdri.MixMode": "Modo de Mezcla HDRI",
+    
+                "-> DEVELOPER": "DEV",
+                "*dev.buildInterface": "Contruir Interfaz",
+                "*dev.changeReleaseDate": "Actualizar Número de Versión",
+                "*dev.cacheLanguages": "Caché de Idiomas",
+                "*dev.buildDictionary": "Construir Diccionario de ID's",
+                "!debugShowcase": "Valores Debug",
+                "*dev.presetOptions": "Opciones de Preset (Memoria)",
+                "*dev.lightOptions": "Opciones de Luces (Memoria)",
+                "*dev.panelOptions": "Opciones de Paneles (Memoria)",
+                "*dev.hdriOptions": "Opciones de HDRI (Memoria)"
+            },
+            "values": { 
+                "54": {
+                    "1": "Activo",
+                    "0": "Apagado"
+                },
+                "20": {
+                    "999": "SELECCIONAR UN PRESET"
+                },
+                "8": {
+                    "999": "Ninguno (DEBUG)"
+                },
+                "14": {
+                    "999": "[Personalizado/Personal]"
+                },
+                "13": {
+                    "999": "$none"
+                },
+                "17": {
+                    "999": "$none"
+                },
+                "11": {
+                    "0": "Ninguno",
+                    "1": "Solo Luces",
+                    "2": "Solo Paneles",
+                    "3": "Todos"
+                },
+                "64": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "27": {
+                    "1": "Visible",
+                    "0": "Oculta"
+                },
+                "47": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "24": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "49": {
+                    "0": "Negro",
+                    "1": "Blanco"
+                },
+                "4": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "65": {
+                    "2": "+Color",
+                    "1": "Automatizado",
+                    "0": "Solo Luminancia"
+                },
+                "2": {
+                    "2": "Color",
+                    "1": "Luminancia",
+                    "0": "Ambos"
+                }
+            }
         }
     },
-    "pt": {
-        "displayName": "Português",
-        "values": {
-            "Test": "Exemplo"
+    "ja": {
+        "displayName": "日本語",
+        "vars": {
+            "$bool_enabled": "ON",
+            "$bool_disabled": "OFF",
+            "$none": "なし"
+        },
+        "strings": {
+            "interface": {
+                "-> HOME": "ホーム",
+                "#quickSetup": "クイックセットアップ",
+                "languageSel": "言語",
+                "loadPresets": "プリセットモード",
+                "presetSelection": "プリセット",
+                "#mainSystem": "カスタム",
+                "selectLightset": "ライトセットタイプ",
+                "#info": "情報",
+                "currentVersion": "現在のバージョン",
+
+                "-> UNIVERSAL": "ユニバーサル",
+                "#uni_general": "一般",
+                "uni_showReflections": "リフレクション",
+                "#uni_lights": "ライト",
+                "uni_lightSelection": "選択したライト",
+                "uni_lightSeed": "ランダムシード",
+                "#uni_panels": "パネル",
+                "uni_panelSelection": "選択したパネル",
+                "uni_panelGI": "GI を使用するパネル",
+
+                "-> HDRI": "HDRI",
+                "hdri_previewReflection": "プレビューリフレクション",
+                "hdri_hdriSelection": "選択したHDRI",
+                "hdri_customSelector": "個人用HDRI",
+                "hdri_hdriGI": "GI を使用するHDRI",
+                "!hdri_custommix": "カスタムミックスオプション",
+                "hdri_enableCustomMix": "カスタムミックス",
+                "hdri_customMixValue": "ミックス強度",
+                "hdri_mixType": "ミックス対象",
+
+                "-> ADVANCED SETTINGS": "高度な設定",
+                "*devMode": "開発者モード",
+                "*hdri.FusionMode": "HDRIフュージョンモード",
+                "*hdri.MixMode": "HDRIミックスモード",
+
+                "-> DEVELOPER": "開発者",
+                "*dev.buildInterface": "インターフェースの構築",
+                "*dev.changeReleaseDate": "バージョン番号の更新",
+                "*dev.cacheLanguages": "言語のキャッシュ",
+                "*dev.buildDictionary": "ID辞書の構築",
+                "!debugShowcase": "デバッグショーケース",
+                "*dev.presetOptions": "プリセットオプション（メモリ）",
+                "*dev.lightOptions": "ライトオプション（メモリ）",
+                "*dev.panelOptions": "パネルオプション（メモリ）",
+                "*dev.hdriOptions": "HDRIオプション（メモリ）"
+            },
+            "values": { 
+                "54": {
+                    "1": "アクティブ",
+                    "0": "オフ"
+                },
+                "20": {
+                    "999": "プリセットを選択"
+                },
+                "8": {
+                    "999": "なし（デバッグ）"
+                },
+                "14": {
+                    "999": "[個人用/カスタム]"
+                },
+                "13": {
+                    "999": "$none"
+                },
+                "17": {
+                    "999": "$none"
+                },
+                "11": {
+                    "0": "なし",
+                    "1": "ライトのみ",
+                    "2": "パネルのみ",
+                    "3": "両方"
+                },
+                "64": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "27": {
+                    "1": "表示",
+                    "0": "非表示"
+                },
+                "47": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "24": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "49": {
+                    "0": "ブラック",
+                    "1": "ホワイト"
+                },
+                "4": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "65": {
+                    "2": "+カラー",
+                    "1": "自動",
+                    "0": "輝度のみ"
+                },
+                "2": {
+                    "2": "カラー",
+                    "1": "輝度",
+                    "0": "両方"
+                }
+            }
         }
     },
-    "ch": {
-        "displayName": "Chinese",
-        "values": {
-            "Test": "Bing Chilling"
+    "pt_BR": {
+        "displayName": "Português (Brasil)",
+        "vars": {
+            "$bool_enabled": "LIGADO",
+            "$bool_disabled": "DESLIGADO",
+            "$none": "Nenhum"
+        },
+        "strings": {
+            "interface": {
+                "-> HOME": "INÍCIO",
+                "#quickSetup": "Configuração Rápida",
+                "languageSel": "Idioma",
+                "loadPresets": "Modo de Preset",
+                "presetSelection": "Preset",
+                "#mainSystem": "Personalizado",
+                "selectLightset": "Tipo de Lightset",
+                "#info": "Informações",
+                "currentVersion": "Versão Atual",
+
+                "-> UNIVERSAL": "UNIVERSAL",
+                "#uni_general": "Geral",
+                "uni_showReflections": "Reflexos",
+                "#uni_lights": "Luzes",
+                "uni_lightSelection": "Luzes Selecionadas",
+                "uni_lightSeed": "Semente Aleatória",
+                "#uni_panels": "Painéis",
+                "uni_panelSelection": "Painéis Selecionados",
+                "uni_panelGI": "Usar Iluminação Global em Painéis",
+
+                "-> HDRI": "HDRI",
+                "hdri_previewReflection": "Pré-visualização de Reflexo",
+                "hdri_hdriSelection": "HDRI Selecionado",
+                "hdri_customSelector": "HDRI Personalizado",
+                "hdri_hdriGI": "Usar Iluminação Global em HDRI",
+                "!hdri_custommix": "Opções de Mistura Personalizada",
+                "hdri_enableCustomMix": "Mistura Personalizada",
+                "hdri_customMixValue": "Intensidade da Mistura",
+                "hdri_mixType": "Misturar Com",
+
+                "-> ADVANCED SETTINGS": "AVANÇADO",
+                "*devMode": "Modo Desenvolvedor",
+                "*hdri.FusionMode": "Modo de Fusão HDRI",
+                "*hdri.MixMode": "Modo de Mistura HDRI",
+
+                "-> DEVELOPER": "DEV",
+                "*dev.buildInterface": "Construir Interface",
+                "*dev.changeReleaseDate": "Atualizar Número da Versão",
+                "*dev.cacheLanguages": "Cache de Idiomas",
+                "*dev.buildDictionary": "Construir Dicionário de ID",
+                "!debugShowcase": "Showcase de Depuração",
+                "*dev.presetOptions": "Opções de Preset (Memória)",
+                "*dev.lightOptions": "Opções de Luz (Memória)",
+                "*dev.panelOptions": "Opções de Painel (Memória)",
+                "*dev.hdriOptions": "Opções de HDRI (Memória)"
+            },
+            "values": {
+                "54": {
+                    "1": "Ativo",
+                    "0": "Desligado"
+                },
+                "20": {
+                    "999": "SELECIONE UM PRESET"
+                },
+                "8": {
+                    "999": "Nenhum (DEBUG)"
+                },
+                "14": {
+                    "999": "[Personalizado/Custom]"
+                },
+                "13": {
+                    "999": "$none"
+                },
+                "17": {
+                    "999": "$none"
+                },
+                "11": {
+                    "0": "Nenhum",
+                    "1": "Apenas Luzes",
+                    "2": "Apenas Painéis",
+                    "3": "Ambos"
+                },
+                "64": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "27": {
+                    "1": "Visível",
+                    "0": "Escondido"
+                },
+                "47": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "24": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "49": {
+                    "0": "Preto",
+                    "1": "Branco"
+                },
+                "4": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
+                },
+                "65": {
+                    "2": "+Cor",
+                    "1": "Automático",
+                    "0": "Apenas Luminância"
+                },
+                "2": {
+                    "2": "Cor",
+                    "1": "Luminância",
+                    "0": "Ambos"
+                }
+            }
         }
     }
 }
