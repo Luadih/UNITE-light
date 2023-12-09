@@ -53,7 +53,10 @@ def cacheLang():
     projectDir = doc.GetDocumentPath()
     try: file = open(projectDir + "/data/lang.json","r", encoding="utf-8")
     except EnvironmentError: err("lang file doesn't exist, you may be in another directory or data folder may have been removed"); return
-    except TypeError: err("the function 'open' in Python triggered a TypeError, update C4D to at least R23"); return
+    except TypeError:
+        err("the function 'open' in Python triggered a TypeError, update C4D to at least R23")
+        c4d.gui.MessageDialog("Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.")
+        return
 
     try: openFile = json.load(file)
     except json.JSONDecodeError: err("lang json file is not structured correctly"); return
