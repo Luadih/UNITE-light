@@ -23,6 +23,7 @@
                 "uni_showReflections": "Reflections",
                 "#uni_lights": "Lights",
                 "uni_lightSelection": "Lights Selected",
+                "uni_light_GINeeded": "Attention",
                 "uni_lightSeed": "Random Seed",
                 "#uni_panels": "Panels",
                 "uni_panelSelection": "Panels Selected",
@@ -40,8 +41,11 @@
     
                 "-> ADVANCED SETTINGS": "ADVANCED",
                 "*devMode": "Developer Mode",
+                "#advanced_hdri": "HDRI",
                 "*hdri.FusionMode": "HDRI Fusion Mode",
                 "*hdri.MixMode": "HDRI Mix Mode",
+                "#advanced_py": "Python Dependant",
+                "*py.adjustGIAuto": "Py: Adjust GI Automatically",
     
                 "-> DEVELOPER": "DEV",
                 "*dev.buildInterface": "Build Interface",
@@ -113,7 +117,14 @@
                     "2": "Color",
                     "1": "Luminance",
                     "0": "Both"
+                },
+                "40": {
+                    "1": "$bool_enabled",
+                    "0": "$bool_disabled"
                 }
+            },
+            "desc": {
+                "41": "Global Illumination is needed for this light selection"
             }
         }
     },
@@ -232,6 +243,9 @@
                     "1": "Luminancia",
                     "0": "Ambos"
                 }
+            },
+            "desc": {
+                "41": "Este set de luces necesita tener activada la Iluminacion Global"
             }
         }
     },

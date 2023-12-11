@@ -97,26 +97,19 @@ def changeLanguage():
     langData = eval(langNull[c4d.ID_USERDATA, 1])
     activeLang = list(langData)[uiNull[c4d.ID_USERDATA, languageSel]]
     langDisplay = langData[activeLang]["displayName"]
+    stringsDir = langData[activeLang]["strings"]
 
-    interfaceStringsExist = True
-    valueStringsExist = True
-
-    try: interfaceStrings = langData[activeLang]["strings"]["interface"]
-    except: interfaceStringsExist = False
-
-    try: valueStrings = langData[activeLang]["strings"]["values"] 
-    except: valueStringsExist = False
-
-    if interfaceStringsExist == False and valueStringsExist == False:
+    if len(stringsDir) == 0:
         err("Language '%s' was made using the wrong format" % langDisplay)
-        return
+        return None
 
+    checks = list(stringsDir)
     nullBc = uiNull.GetUserDataContainer()
 
-    if interfaceStringsExist:
+    if "interface" in checks:
         interfaceChanges = []
 
-        for key in interfaceStrings:
+        for key in stringsDir["interface"]:
             for udId, bc in nullBc:
                 udName = bc.GetString(c4d.DESC_NAME)
                 udsName = bc.GetString(c4d.DESC_SHORT_NAME)
@@ -131,16 +124,16 @@ def changeLanguage():
                     nameSpace = c4d.DESC_SHORT_NAME
 
                 if udDefName == key:
-                    interfaceChanges.append((udId, nameSpace, str(interfaceStrings[key]), bc))
+                    interfaceChanges.append((udId, nameSpace, str(stringsDir["interface"][key]), bc))
 
         for udId, key, value, container in interfaceChanges:
             container[key] = value
             uiNull.SetUserDataContainer(udId, container)
 
-    if valueStringsExist:
+    if "values" in checks:
         valueChanges = []
 
-        for key, value in valueStrings.items():
+        for key, value in stringsDir["values"].items():
             udId, bc = accessDictionary_by_UdID(int(key), uiNull)
             valueChanges.append((value, udId, bc))
 
@@ -153,6 +146,9 @@ def changeLanguage():
 
             uiNull.SetUserDataContainer(udId, container)
 
+    if "desc" in checks:
+        for key in stringsDir["desc"]:
+            uiNull[c4d.ID_USERDATA, int(key)] = stringsDir["desc"][key]
 
 def accessDictionary_by_UdID(userdataid, directory):
     dictNull = essentials()[1]
