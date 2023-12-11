@@ -65,7 +65,11 @@ def cacheLang():
     count = len(openFile)
     if count == 0: err("there are no languages in the language file"); return
 
-    cacheData = usePseudoVariables(openFile)
+    myKeys = list(openFile.keys())
+    myKeys.sort()
+    sorted_dict = {i: openFile[i] for i in myKeys}
+
+    cacheData = usePseudoVariables(sorted_dict)
     langNull[c4d.ID_USERDATA, 1] = json.dumps(cacheData, indent=4, ensure_ascii=False)
 
     langDict = eval(langNull[c4d.ID_USERDATA, 1])
