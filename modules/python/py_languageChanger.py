@@ -65,12 +65,18 @@ def cacheLang():
     count = len(openFile)
     if count == 0: err("there are no languages in the language file"); return
 
+    # Sorts the dict just in case
     myKeys = list(openFile.keys())
     myKeys.sort()
     sorted_dict = {i: openFile[i] for i in myKeys}
 
     cacheData = usePseudoVariables(sorted_dict)
     langNull[c4d.ID_USERDATA, 1] = json.dumps(cacheData, indent=4, ensure_ascii=False)
+
+    listCache = {}
+    for index, item in enumerate(sorted_dict):
+        listCache[index] = item
+    langNull[c4d.ID_USERDATA, 2] = json.dumps(listCache)
 
     langDict = eval(langNull[c4d.ID_USERDATA, 1])
 
@@ -98,8 +104,9 @@ def loadLanguagesToUi(controllerId, langDict):
 def changeLanguage():
     uiNull = essentials()[0]
     langNull, languageSel = mainVar()
+    idCache = eval(langNull[c4d.ID_USERDATA, 2])
     langData = eval(langNull[c4d.ID_USERDATA, 1])
-    activeLang = list(langData)[uiNull[c4d.ID_USERDATA, languageSel]]
+    activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
     langDisplay = langData[activeLang]["displayName"]
     stringsDir = langData[activeLang]["strings"]
 
