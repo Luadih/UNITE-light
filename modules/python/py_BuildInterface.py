@@ -19,7 +19,7 @@ def essentials():
 
 def mainVar():
     # HDRI Vars
-    hdriMatLayer = ["un.hdri.Simp", "un.hdri.Univ"]
+    hdriMatLayer = ["un.hdri.Univ", "un.hdri.Simp"]
     hdriMemNull = "un_HDRIMemory"
     hdriMemPrefix = "UN.HDR."
 
@@ -100,17 +100,26 @@ def generateHdrimem():
     hdriMemPrefix = mainVar()[2]
     mats = doc.GetMaterials()
 
-    for index, selmat in enumerate(mats):
+    hdriMats = []
+
+    for selmat in mats:
         lmats = selmat.GetLayerObject(doc).GetName() if selmat.GetLayerObject(doc) else None
 
         if lmats is None: 
             continue
 
         if lmats in hdriMatLayer:
+            orderIndex = hdriMatLayer.index(lmats)
             materialName = selmat.GetName()
             materialNameF = hdriMemPrefix + materialName
-            linkobj = selmat
-            createMemory(materialNameF, linkobj)
+            hdriMats.append((materialNameF, selmat, orderIndex))
+    
+    def sortFunction(elem):
+        return elem[2]
+    hdriMats.sort(key=sortFunction)
+
+    for name, mat, index in hdriMats:
+        createMemory(name, mat)
 
 def createMemory(nullName, linkobj): # Creates objects to use as memory
     hdriMemNull = mainVar()[1]
