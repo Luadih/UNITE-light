@@ -7,7 +7,9 @@ This is a Lightkit meant for the 3D Program [Cinema4D](https://www.maxon.net/en-
 ## Download
 
 ### https://github.com/Luadih/unite-light/releases/latest
-### Cinema 4D R16 or newer is recommended. Versions prior to R16 won't be supported nor made a backport for them.
+### Cinema 4D R19 or newer is recommended.
+### The lightroom also works partially in R16, since all linked to Python won't work there, but the essentials part of the lightroom are made in Xpresso.
+### Versions prior to R16 won't be at all supported nor made a backport for them.
 
 ## Licensing
 
