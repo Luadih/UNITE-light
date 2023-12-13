@@ -51,19 +51,23 @@ def message(msg_type, data):
 def cacheLang():
     langNull, languageSel = mainVar()
     projectDir = doc.GetDocumentPath()
-    try: file = open(projectDir + "/data/lang.json","r", encoding="utf-8")
-    except EnvironmentError: err("lang file doesn't exist, you may be in another directory or data folder may have been removed"); return
+    lang_file_path = projectDir + "/data/lang.json"
+    
+    try:
+        with open(lang_file_path, "r", encoding="utf-8") as file:
+            openFile = json.load(file)
+    except EnvironmentError:
+        err("lang file doesn't exist, you may be in another directory or data folder may have been removed")
+        return
     except TypeError:
         err("the function 'open' in Python triggered a TypeError, update C4D to at least R23")
         c4d.gui.MessageDialog("Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.")
         return
+    except json.JSONDecodeError:
+        err("lang json file is not structured correctly")
+        return
 
-    try: openFile = json.load(file)
-    except json.JSONDecodeError: err("lang json file is not structured correctly"); return
-    file.close()
-
-    count = len(openFile)
-    if count == 0: err("there are no languages in the language file"); return
+    if not openFile: err("there are no languages in the language file"); return
 
     # Sorts the dict just in case
     myKeys = list(openFile.keys())
@@ -73,9 +77,7 @@ def cacheLang():
     cacheData = usePseudoVariables(sorted_dict)
     langNull[c4d.ID_USERDATA, 1] = json.dumps(cacheData, indent=4, ensure_ascii=False)
 
-    listCache = {}
-    for index, item in enumerate(sorted_dict):
-        listCache[index] = item
+    listCache = {index: item for index, item in enumerate(sorted_dict)}
     langNull[c4d.ID_USERDATA, 2] = json.dumps(listCache)
 
     langDict = eval(langNull[c4d.ID_USERDATA, 1])
@@ -86,9 +88,7 @@ def cacheLang():
 
 def loadLanguagesToUi(controllerId, langDict):
     uiNull = essentials()[0]
-    count = len(langDict)
     controllerValue = uiNull[c4d.ID_USERDATA, controllerId]
-
     udId, bc = accessDictionary_by_UdID(controllerId, uiNull)
 
     cycleCont = c4d.BaseContainer()
@@ -96,7 +96,7 @@ def loadLanguagesToUi(controllerId, langDict):
         langName = langDict[langKey]["displayName"]
         cycleCont.SetString(index, langName)
 
-    if controllerValue > count - 1: uiNull[c4d.ID_USERDATA, controllerId] = 0
+    if controllerValue > len(langDict) - 1: uiNull[c4d.ID_USERDATA, controllerId] = 0
 
     bc[c4d.DESC_CYCLE] = cycleCont
     uiNull.SetUserDataContainer(udId, bc)
@@ -110,7 +110,7 @@ def changeLanguage():
     langDisplay = langData[activeLang]["displayName"]
     stringsDir = langData[activeLang]["strings"]
 
-    if len(stringsDir) == 0:
+    if not stringsDir:
         err("Language '%s' was made using the wrong format" % langDisplay)
         return None
 
@@ -173,11 +173,8 @@ def accessDictionary_by_UdID(userdataid, directory):
 def usePseudoVariables(jsonFile):
     def replaceVars(jsonFile, language, stringGroup, vars):
         stringsCont = jsonFile[language]["strings"][stringGroup]
-        stringMemory = []
+        stringMemory = [(data, stringsCont[data]) for data in stringsCont]
         valueChanges = []
-
-        for data in stringsCont:
-            stringMemory.append((data, stringsCont[data]))
 
         for index, data in enumerate(stringMemory):
             if any(x in list(vars) for x in (data[1].values() if isinstance(data[1], dict) else [data[1]])):
@@ -194,13 +191,12 @@ def usePseudoVariables(jsonFile):
 
     for language in languages:
         try: translationGroups = list(jsonFile[language]["strings"])
-        except: err("Language %s doesn't have any translation strings" % language)
+        except KeyError: err("Language %s doesn't have any translation strings" % language)
 
         try:
             vars = jsonFile[language]["vars"]
             for group in translationGroups:
                 replaceVars(jsonFile, language, group, vars)
-        except KeyError:
-            err("Language %s doesn't have variables (Skipping)" % language)
+        except KeyError: err("Language %s doesn't have variables (Skipping)" % language)
 
     return jsonFile

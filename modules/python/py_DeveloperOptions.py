@@ -36,13 +36,10 @@ def hideUserData(trigger, target):
     if target == []: err("targetData is empty"); return
     if type(target) == int: target = [target]
 
-    triggerValue = controller[c4d.ID_USERDATA, trigger]
-    modifications = []
-
     for targetId in target:
         udId, bc = accessDictionary_by_UdID(targetId, controller)
-        bc[c4d.DESC_HIDE] = triggerValue == 0
-        modifications.append((udId, bc))
+        bc[c4d.DESC_HIDE] = trigger == 0
+        modifications = [(udId, bc)]
     
     for descId, container in modifications:
         controller.SetUserDataContainer(descId, container)

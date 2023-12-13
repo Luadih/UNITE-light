@@ -54,16 +54,13 @@ def populateOptions(options, controlId, noneSelection, elementType, cacheList_ID
     hdriMatLayer, hdriMemNull, hdriMemPrefix, lightPrefix, panelPrefix = mainVar()
     controlValue = uiNull[c4d.ID_USERDATA, controlId]
     options = doc.SearchObject(options)   # Where groups are located
-
     children = options.GetChildren()
-    count = len(children)
 
     udId, bc = accessDictionary_by_UdID(controlId, uiNull)
     prefixes = {0: lightPrefix, 1: panelPrefix, 2: hdriMemPrefix}
     
     cycle = c4d.BaseContainer()
-    for index in range(0, count) :
-        child = children[index]
+    for index, child in enumerate(children):
         if elementType in prefixes:
             prefix = prefixes.get(elementType, '')
             childName = (child.GetName()).replace(prefix, '')
@@ -76,22 +73,21 @@ def populateOptions(options, controlId, noneSelection, elementType, cacheList_ID
 
     uiNull.SetUserDataContainer(udId, bc)
 
-    if count == 0:
+    if not children:
         uiNull[c4d.ID_USERDATA, controlId] = 999
-    elif controlValue > count - 1 and controlValue != 999:
+    elif controlValue > len(children) - 1 and controlValue != 999:
         uiNull[c4d.ID_USERDATA, controlId] = 0
 
-    print("UN: Added %s elements from %s to User Interface" % (count, options.GetName()))
+    print("UN: Added %s elements from %s to User Interface" % (len(children), options.GetName()))
 
-    createLinks(cacheList_ID, children, count, uiNull)
+    createLinks(cacheList_ID, children, uiNull)
 
-def createLinks(cacheList, elements, elementCount, controller):
+def createLinks(cacheList, elements, controller):
     controller[c4d.ID_USERDATA,cacheList] = c4d.InExcludeData()
 
     inexList = controller[c4d.ID_USERDATA,cacheList]
-    for index in range(0, elementCount) :
-        child = elements[index]
-        inexList.InsertObject(child, 0)
+    for elem in elements:
+        inexList.InsertObject(elem, 0)
     controller[c4d.ID_USERDATA,cacheList] = inexList
 
 def generateHdrimem():
@@ -99,7 +95,6 @@ def generateHdrimem():
     hdriMatLayer= mainVar()[0]
     hdriMemPrefix = mainVar()[2]
     mats = doc.GetMaterials()
-
     hdriMats = []
 
     for selmat in mats:
@@ -142,11 +137,7 @@ def clearMemory(): # Removes all children of hdriMemNull (clearing memory)
     hdriMemNull = mainVar()[1]
     collection = doc.SearchObject(hdriMemNull)
     items = collection.GetChildren()
-    count = len(items)
-
-    for index in range(0, count):
-        child = items[index]
-        child.Remove()
+    for item in items: item.Remove()
 
 def hdriMemUserData(nullObj, linkobj): #Adds User Data to Null
     # HDRI Link

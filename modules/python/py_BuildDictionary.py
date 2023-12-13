@@ -29,13 +29,6 @@ def buildDictionary():
     uiNull = essentials()
     opObj = op.GetObject()
     userData = uiNull.GetUserDataContainer()
-    count = -1
-    userDataDict = {}
-
-    for element in userData:
-        udId = element[0]
-        count += 1
-        Id = udId[1].id
-        userDataDict[Id] = count
+    userDataDict = {element[0][1].id: index for index, element in enumerate(userData)}
 
     opObj[c4d.ID_USERDATA, 1] = str(userDataDict)
