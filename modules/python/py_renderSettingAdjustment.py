@@ -28,41 +28,66 @@ def message(msg_type, data):
     if (
         msg_type == c4d.MSG_NOTIFY_EVENT and
         data['event_data']['msg_id'] == c4d.MSG_DESCRIPTION_POSTSETPARAMETER and
-        data['event_data']['msg_data']['descid'][1].id in [13,8]
+        data['event_data']['msg_data']['descid'][1].id in [13,8,36,43,40]
     ):
-        GINeeded = lightValue(uiNull)
-        hideUserData(GINeeded, 41)
-        if uiNull[c4d.ID_USERDATA, 40] == True:
-            toggleGI(GINeeded)
+        AutoValue = uiNull[c4d.ID_USERDATA, 40]
+        lightSettings = lightValues(uiNull)
+        if lightSettings == None: return
+        GIValue, AOValue = lightSettings
 
-def lightValue(uiNull):
+        if AutoValue > 0:
+            toggleRenderEffect(GIValue, "gi")
+            showUserData(False, 41)
+            if AutoValue == 2:
+                toggleRenderEffect(AOValue, "ao")
+                showUserData(False, 45)
+        else:
+            showUserData(GIValue, 41)
+            showUserData(AOValue, 45)
+
+def lightValues(uiNull):
     collection = doc.SearchObject("un_LCollections")
     children = collection.GetChildren()
     lightValue = uiNull[c4d.ID_USERDATA, 13]
 
     if lightValue != 999:
-        GINeeded = (children[lightValue])[c4d.ID_USERDATA, 1]
-    else: return False
+        GIValue = (children[lightValue])[c4d.ID_USERDATA, 1]
+        AOValue = (children[lightValue])[c4d.ID_USERDATA, 3]
+    else: return None
 
-    return GINeeded
+    return [GIValue, AOValue]
 
-def toggleGI(GINeeded):
+def toggleRenderEffect(lightvalue, renderName):
     uiNull = essentials()[0]
-    typeBlacklisted = uiNull[c4d.ID_USERDATA, 8] in [1,999]
+    renderlist = {
+        "gi": {
+            "id": c4d.VPglobalillumination,
+            "override": 36
+        },
+        "ao": {
+            "id": c4d.VPambientocclusion,
+            "override": 43
+        }
+    }
 
     render_data = doc.GetActiveRenderData()
     if render_data is None: return
     video_post = render_data.GetFirstVideoPost()
 
+    renderEffect = renderlist[renderName]["id"]
+    controlId = renderlist[renderName]["override"]
+    value = uiNull[c4d.ID_USERDATA, controlId] if uiNull[c4d.ID_USERDATA, controlId] != 2 else lightvalue
+    typeBlacklisted = uiNull[c4d.ID_USERDATA, 8] in [1,999]
+
     while video_post is not None:
-        if video_post.GetType() == c4d.VPglobalillumination:
-            if (typeBlacklisted is False and GINeeded == 1):
+        if video_post.GetType() == renderEffect:
+            if (typeBlacklisted is False and value == 1):
                 video_post.DelBit(c4d.BIT_VPDISABLED)
             else: video_post.SetBit(c4d.BIT_VPDISABLED)
             break
         video_post = video_post.GetNext()
 
-def hideUserData(trigger, target):
+def showUserData(trigger, target):
     controller = essentials()[0]
     if target == []: err("targetData is empty"); return
     if type(target) == int: target = [target]
