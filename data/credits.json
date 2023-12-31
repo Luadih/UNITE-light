@@ -1,0 +1,18 @@
+{
+    "Development": {
+        "LUADH": "Main developer / creator of the project",
+        "JuanFX": "Developer and provider of the JuanFX set"
+    },
+    "Inspirations": {
+        "David. F": "Ultimate Basics is inspired on his 'Ultimate Lights'",
+        "Ricky. B": "Direct Point is based on his 'Ricky Glowroom'",
+        "MiguelArtz": "Venetian HDRI is based on his 'MiguelArtz Lightroom V4'"
+    },
+    "Testers": {
+        "EduArts": "Main tester"
+    },
+    "Legacy (CLK)": {
+        "Nicour": "Provided the 'Niko' (Nico Lightroom V2) set back in the CLK",
+        "Proks": "Provided the 'Skorp' (Skorp Light) set back in the CLK"
+    }
+}
