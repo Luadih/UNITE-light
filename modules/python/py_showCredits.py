@@ -72,10 +72,9 @@ def cacheCredits():
     listCache = {index: item for index, item in enumerate(openFile)}
     creditsNull[c4d.ID_USERDATA, 2] = json.dumps(listCache)
 
-    print("UN: Credits correctly cached")
+    print("UN: Credits correctly cached to memory")
 
 def showCredits():
-    c4d.gui.MessageDialog("Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project.")
     creditsNull = creditsNull_func()
     idCache = eval(creditsNull[c4d.ID_USERDATA, 2])
     creditsData = eval(creditsNull[c4d.ID_USERDATA, 1])
@@ -96,6 +95,8 @@ def showCredits():
 
     doc.InsertObject(creditsObj)
     c4d.EventAdd()
+    
+    c4d.gui.MessageDialog("Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project.")
 
 def creditsObjCreation():
     obj = c4d.BaseObject(c4d.Onull)
@@ -119,7 +120,6 @@ def createGroupUD(obj, name, parentGroup=None, columns=None, shortname=None):
     if parentGroup is not None:
         bc[c4d.DESC_PARENTGROUP] = parentGroup
     if columns is not None:
-        #DESC_COLUMNS VALUE IS WRONG IN 15.057 - SHOULD BE 22
         bc[22] = columns
     bc[16] = True
 
