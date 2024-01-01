@@ -1,65 +1,69 @@
 {
     "de": {
-        "displayName": "Deutsch",
+        "displayName": "Deutsch [GPT]",
         "vars": {
-            "$bool_enabled": "EIN",
+            "$bool_enabled": "AN",
             "$bool_disabled": "AUS",
             "$none": "Keine"
         },
         "strings": {
             "interface": {
-                "-> HOME": "STARTSEITE",
-                "#quickSetup": "Schnelle Einrichtung",
+                "-> HOME": "START",
+                "#quickSetup": "Schnelleinrichtung",
                 "languageSel": "Sprache",
-                "loadPresets": "Voreinstellungsmodus",
-                "presetSelection": "Preset",
+                "loadPresets": "Voreinstellungen Modus",
+                "presetSelection": "Voreinstellung",
                 "#mainSystem": "Benutzerdefiniert",
-                "selectLightset": "Lichtset Typ",
-                "#info": "Information",
+                "selectLightset": "Lichtset-Typ",
+                "#info": "Informationen",
                 "currentVersion": "Aktuelle Version",
     
                 "-> UNIVERSAL": "UNIVERSAL",
                 "#uni_general": "Allgemein",
                 "uni_showReflections": "Reflexionen",
                 "#uni_lights": "Lichter",
-                "uni_lightSelection": "Lichter Ausgewählt",
-                "uni_light_GINeeded": "Achtung",
+                "uni_lightSelection": "Ausgewählte Lichter",
+                "uni_light_GINeeded": "GI Hinweis",
+                "uni_light_AORecommended": "AO Hinweis",
                 "#uni_panels": "Panels",
-                "uni_panelSelection": "Panels Ausgewählt",
-                "uni_panelGI": "Panels Benutzen GI",
+                "uni_panelSelection": "Ausgewählte Panels",
+                "uni_panelGI": "Panels verwenden GI",
     
                 "-> HDRI": "HDRI",
                 "hdri_previewReflection": "Vorschau Reflexion",
-                "hdri_hdriSelection": "HDRI Ausgewählt",
+                "hdri_hdriSelection": "Ausgewähltes HDRI",
                 "hdri_customSelector": "Persönliches HDRI",
-                "hdri_hdriGI": "HDRI Benutzen GI",
-                "!hdri_custommix": "Custom Mix Optionen",
-                "hdri_enableCustomMix": "Custom Mix",
-                "hdri_customMixValue": "Mix Stärke",
+                "hdri_hdriGI": "HDRI verwendet GI",
+                "!hdri_custommix": "Benutzerdefinierte Mix-Optionen",
+                "hdri_enableCustomMix": "Benutzerdefinierten Mix aktivieren",
+                "hdri_customMixValue": "Mischstärke",
                 "hdri_mixType": "Startfarbe",
     
                 "-> ADVANCED SETTINGS": "ERWEITERT",
-                "*devMode": "Entwickler Modus",
+                "*devMode": "Entwicklermodus",
                 "#advanced_hdri": "HDRI",
-                "*hdri.FusionMode": "HDRI Fusion Modus",
-                "*hdri.MixMode": "HDRI Mix Modus",
-                "*hdri.HDRIControls": "HDRI Mit UI Steuern",
-                "#advanced_py": "Python Abhängig",
-                "*py.adjustGIAuto": "Py: Adjust GI Automatisch",
+                "*hdri.FusionMode": "HDRI-Fusionsmodus",
+                "*hdri.MixMode": "HDRI-Mixmodus",
+                "*hdri.HDRIControls": "HDRI mit UI steuern",
+                "#advanced_py": "Python-abhängig",
+                "*py.adjustRSAuto": "Py: Render-Einstellungen automatisch anpassen",
+                "*py.override_GI": "Py: Globale Beleuchtung überschreiben",
+                "*py.override_AO": "Py: Umgebungsverdeckung überschreiben",
     
                 "-> DEVELOPER": "ENTWICKLER",
-                "*dev.buildInterface": "Interface Bauen",
-                "*dev.changeReleaseDate": "Update Version Nummer",
-                "*dev.cacheLanguages": "Sprachen Zwischenspeichern",
-                "*dev.buildDictionary": "ID Wörterbuch Bauen",
-                "!debugShowcase": "Debug Vitrine",
-                "*dev.presetOptions": "Preset Optionen (Speicher)",
-                "*dev.lightOptions": "Licht Optionen (Speicher)",
-                "*dev.panelOptions": "Panel Optionen (Speicher)",
-                "*dev.hdriOptions": "HDRI Optionen (Speicher)"
+                "*dev.buildInterface": "Benutzeroberfläche erstellen",
+                "*dev.changeReleaseDate": "Versionsnummer aktualisieren",
+                "*dev.cacheLanguages": "Sprachen zwischenspeichern",
+                "*dev.buildDictionary": "ID-Verzeichnis erstellen",
+                "!debugShowcase": "Debug-Showcase",
+                "*dev.presetOptions": "Preset-Optionen (Speicher)",
+                "*dev.lightOptions": "Licht-Optionen (Speicher)",
+                "*dev.panelOptions": "Panel-Optionen (Speicher)",
+                "*dev.hdriOptions": "HDRI-Optionen (Speicher)"
             },
             "desc": {
-                "41": "Globale Beleuchtung ist für diese Lichtauswahl erforderlich"
+                "41": "Globale Beleuchtung ist für diese Lichtauswahl erforderlich",
+                "45": "Für diese Lichtauswahl wird Umgebungsverdeckung empfohlen"
             },
             "values": {
                 "54": {
@@ -76,7 +80,7 @@
                     "999": "Keine (DEBUG)"
                 },
                 "14": {
-                    "999": "[Persönlich/Custom]"
+                    "999": "[Persönlich/Benutzerdefiniert]"
                 },
                 "13": {
                     "999": "$none"
@@ -116,7 +120,7 @@
                 },
                 "65": {
                     "2": "+Farbe",
-                    "1": "Automatisch",
+                    "1": "Automatisiert",
                     "0": "Nur Luminanz"
                 },
                 "2": {
@@ -129,12 +133,23 @@
                     "0": "$bool_disabled"
                 },
                 "40": {
-                    "1": "$bool_enabled",
-                    "0": "$bool_disabled"
+                    "2": "GI + AO",
+                    "1": "AO",
+                    "0": "$none"
+                },
+                "36": {
+                    "1": "Aktiviert",
+                    "0": "Deaktiviert",
+                    "2": "Keine Überschreibung"
+                },
+                "43": {
+                    "1": "Aktiviert",
+                    "0": "Deaktiviert",
+                    "2": "Keine Überschreibung"
                 }
             }
         }
-    },    
+    },     
     "en": {
         "displayName": "English",
         "vars": {
@@ -152,6 +167,7 @@
                 "#mainSystem": "Custom",
                 "selectLightset": "Lightset Type",
                 "#info": "Information",
+                "showCredits": "Show Credits",
                 "currentVersion": "Current Version",
     
                 "-> UNIVERSAL": "UNIVERSAL",
@@ -159,7 +175,8 @@
                 "uni_showReflections": "Reflections",
                 "#uni_lights": "Lights",
                 "uni_lightSelection": "Lights Selected",
-                "uni_light_GINeeded": "Attention",
+                "uni_light_GINeeded": "GI Note",
+                "uni_light_AORecommended": "AO Note",
                 "#uni_panels": "Panels",
                 "uni_panelSelection": "Panels Selected",
                 "uni_panelGI": "Panels Use GI",
@@ -179,14 +196,17 @@
                 "#advanced_hdri": "HDRI",
                 "*hdri.FusionMode": "HDRI Fusion Mode",
                 "*hdri.MixMode": "HDRI Mix Mode",
-                "*hdri.HDRIControls": "Control HDRI With UI",
+                "*hdri.HDRIControls": "Control Personal HDRI With UI",
                 "#advanced_py": "Python Dependant",
-                "*py.adjustGIAuto": "Py: Adjust GI Automatically",
+                "*py.adjustRSAuto": "Py: Adjust Render Settings Automatically",
+                "*py.override_GI": "Py: Override Global Illumination",
+                "*py.override_AO": "Py: Override Ambient Occlusion",
     
                 "-> DEVELOPER": "DEV",
                 "*dev.buildInterface": "Build Interface",
                 "*dev.changeReleaseDate": "Update Version Number",
                 "*dev.cacheLanguages": "Cache Languages",
+                "*dev.cacheCredits": "Cache Credits",
                 "*dev.buildDictionary": "Build ID Dictionary",
                 "!debugShowcase": "Debug Showcase",
                 "*dev.presetOptions": "Preset Options (Memory)",
@@ -195,7 +215,8 @@
                 "*dev.hdriOptions": "HDRI Options (Memory)"
             },
             "desc": {
-                "41": "Global Illumination is needed for this light selection"
+                "41": "Global Illumination is needed for this light selection",
+                "45": "Ambient Occlusion is recommended for this light selection"
             },
             "values": { 
                 "54": {
@@ -265,8 +286,19 @@
                     "0": "$bool_disabled"
                 },
                 "40": {
-                    "1": "$bool_enabled",
-                    "0": "$bool_disabled"
+                    "2": "GI + AO",
+                    "1": "AO",
+                    "0": "$none"
+                },
+                "36": {
+                    "1": "Enabled",
+                    "0": "Disabled",
+                    "2": "No Override"
+                },
+                "43": {
+                    "1": "Enabled",
+                    "0": "Disabled",
+                    "2": "No Override"
                 }
             }
         }
@@ -288,6 +320,7 @@
                 "#mainSystem": "Config. Personalizada",
                 "selectLightset": "Tipo de Lightroom",
                 "#info": "Información",
+                "showCredits": "Creditos",
                 "currentVersion": "Versión Actual",
     
                 "-> UNIVERSAL": "UNIVERSAL",
@@ -295,7 +328,8 @@
                 "uni_showReflections": "Reflejos",
                 "#uni_lights": "Luces",
                 "uni_lightSelection": "Luces Seleccionadas",
-                "uni_light_GINeeded": "Atención",
+                "uni_light_GINeeded": "Nota de IG",
+                "uni_light_AORecommended": "Nota de OA",
                 "#uni_panels": "Paneles",
                 "uni_panelSelection": "Paneles Seleccionados",
                 "uni_panelGI": "Usar IG en Paneles",
@@ -315,14 +349,17 @@
                 "#advanced_hdri": "HDRI",
                 "*hdri.FusionMode": "Modo de Fusión HDRI",
                 "*hdri.MixMode": "Modo de Mezcla HDRI",
-                "*hdri.HDRIControls": "Controlar HDRI con Interfaz",
+                "*hdri.HDRIControls": "Controlar HDRI Personal con Interfaz",
                 "#advanced_py": "Dependiente de Python",
-                "*py.adjustGIAuto": "Py: Ajustar IG Automáticamente",
+                "*py.adjustRSAuto": "Py: Ajustar RS Automáticamente",
+                "*py.override_GI": "Py: Sobreescribir Iluminación Global",
+                "*py.override_AO": "Py: Sobreescribir Oclusión Ambiental",
     
                 "-> DEVELOPER": "DEV",
                 "*dev.buildInterface": "Construir Interfaz",
                 "*dev.changeReleaseDate": "Actualizar Número de Versión",
                 "*dev.cacheLanguages": "Caché de Idiomas",
+                "*dev.cacheCredits": "Cache de Creditos",
                 "*dev.buildDictionary": "Construir Diccionario de IDs",
                 "!debugShowcase": "Valores Debug",
                 "*dev.presetOptions": "Opciones de Preset (Memoria)",
@@ -331,7 +368,8 @@
                 "*dev.hdriOptions": "Opciones de HDRI (Memoria)"
             },
             "desc": {
-                "41": "Se necesita activar la Iluminación Global para esta selección de luces"
+                "41": "Se necesita activar la Iluminación Global para esta selección de luces",
+                "45": "Se recomienda activar la Oclusión Ambiental para esta selección de luces"
             },
             "values": {
                 "54": {
@@ -401,14 +439,25 @@
                     "0": "$bool_disabled"
                 },
                 "40": {
-                    "1": "$bool_enabled",
-                    "0": "$bool_disabled"
+                    "2": "IG + OA",
+                    "1": "OA",
+                    "0": "$none"
+                },
+                "36": {
+                    "1": "Activada",
+                    "0": "Desactivada",
+                    "2": "No Reemplazar"
+                },
+                "43": {
+                    "1": "Activada",
+                    "0": "Desactivada",
+                    "2": "No Reemplazar"
                 }
             }
         }
     },
     "fr": {
-        "displayName": "Français",
+        "displayName": "Français [GPT]",
         "vars": {
             "$bool_enabled": "ACTIVÉ",
             "$bool_disabled": "DÉSACTIVÉ",
@@ -419,11 +468,11 @@
                 "-> HOME": "ACCUEIL",
                 "#quickSetup": "Configuration Rapide",
                 "languageSel": "Langue",
-                "loadPresets": "Mode Prédéfini",
-                "presetSelection": "Prédéfini",
+                "loadPresets": "Mode Préréglages",
+                "presetSelection": "Préréglage",
                 "#mainSystem": "Personnalisé",
-                "selectLightset": "Type de Jeu de Lumières",
-                "#info": "Information",
+                "selectLightset": "Type de Lightset",
+                "#info": "Informations",
                 "currentVersion": "Version Actuelle",
     
                 "-> UNIVERSAL": "UNIVERSEL",
@@ -431,20 +480,21 @@
                 "uni_showReflections": "Réflexions",
                 "#uni_lights": "Lumières",
                 "uni_lightSelection": "Lumières Sélectionnées",
-                "uni_light_GINeeded": "Attention",
+                "uni_light_GINeeded": "Note GI",
+                "uni_light_AORecommended": "Note AO",
                 "#uni_panels": "Panneaux",
                 "uni_panelSelection": "Panneaux Sélectionnés",
-                "uni_panelGI": "Utiliser GI sur les Panneaux",
+                "uni_panelGI": "Panneaux Utilisent GI",
     
                 "-> HDRI": "HDRI",
                 "hdri_previewReflection": "Aperçu Réflexion",
                 "hdri_hdriSelection": "HDRI Sélectionné",
                 "hdri_customSelector": "HDRI Personnel",
-                "hdri_hdriGI": "Utiliser GI sur le HDRI",
+                "hdri_hdriGI": "HDRI Utilise GI",
                 "!hdri_custommix": "Options Mélange Personnalisé",
                 "hdri_enableCustomMix": "Mélange Personnalisé",
                 "hdri_customMixValue": "Force de Mélange",
-                "hdri_mixType": "Couleur de Démarrage",
+                "hdri_mixType": "Couleur de Départ",
     
                 "-> ADVANCED SETTINGS": "AVANCÉ",
                 "*devMode": "Mode Développeur",
@@ -452,22 +502,25 @@
                 "*hdri.FusionMode": "Mode Fusion HDRI",
                 "*hdri.MixMode": "Mode Mélange HDRI",
                 "*hdri.HDRIControls": "Contrôler HDRI Avec UI",
-                "#advanced_py": "Dépendance Python",
-                "*py.adjustGIAuto": "Py : Ajuster GI Automatiquement",
+                "#advanced_py": "Dépendant de Python",
+                "*py.adjustRSAuto": "Py : Ajuster Automatiquement RS",
+                "*py.override_GI": "Py : Remplacer Illumination Globale",
+                "*py.override_AO": "Py : Remplacer Ombre Ambiante",
     
-                "-> DEVELOPER": "DÉVELOPPEUR",
+                "-> DEVELOPER": "DÉV",
                 "*dev.buildInterface": "Construire Interface",
-                "*dev.changeReleaseDate": "Mettre à Jour le Numéro de Version",
-                "*dev.cacheLanguages": "Mettre en Cache les Langues",
+                "*dev.changeReleaseDate": "Mettre à Jour Numéro de Version",
+                "*dev.cacheLanguages": "Mettre en Cache Langues",
                 "*dev.buildDictionary": "Construire Dictionnaire d'ID",
                 "!debugShowcase": "Vitrine de Débogage",
-                "*dev.presetOptions": "Options de Prédéfini (Mémoire)",
-                "*dev.lightOptions": "Options de Lumière (Mémoire)",
-                "*dev.panelOptions": "Options de Panneau (Mémoire)",
-                "*dev.hdriOptions": "Options de HDRI (Mémoire)"
+                "*dev.presetOptions": "Options Préréglage (Mémoire)",
+                "*dev.lightOptions": "Options Lumière (Mémoire)",
+                "*dev.panelOptions": "Options Panneau (Mémoire)",
+                "*dev.hdriOptions": "Options HDRI (Mémoire)"
             },
             "desc": {
-                "41": "L'illumination globale est nécessaire pour cette sélection de lumières"
+                "41": "L'Illumination Globale est nécessaire pour cette sélection de lumière",
+                "45": "L'Ombre Ambiante est recommandée pour cette sélection de lumière"
             },
             "values": {
                 "54": {
@@ -475,7 +528,7 @@
                     "0": "Inactif"
                 },
                 "20": {
-                    "999": "SÉLECTIONNER UN PRÉDÉFINI"
+                    "999": "SÉLECTIONNER UN PRÉRÉGLAGE"
                 },
                 "8": {
                     "0": "Universel",
@@ -494,8 +547,8 @@
                 },
                 "11": {
                     "0": "Aucun",
-                    "1": "Lumières Seulement",
-                    "2": "Panneaux Seulement",
+                    "1": "Seulement Lumières",
+                    "2": "Seulement Panneaux",
                     "3": "Les Deux"
                 },
                 "64": {
@@ -537,14 +590,25 @@
                     "0": "$bool_disabled"
                 },
                 "40": {
-                    "1": "$bool_enabled",
-                    "0": "$bool_disabled"
+                    "2": "GI + AO",
+                    "1": "AO",
+                    "0": "$none"
+                },
+                "36": {
+                    "1": "Activé",
+                    "0": "Désactivé",
+                    "2": "Aucune Remplacement"
+                },
+                "43": {
+                    "1": "Activé",
+                    "0": "Désactivé",
+                    "2": "Aucune Remplacement"
                 }
             }
         }
-    }, 
+    },    
     "ja": {
-        "displayName": "日本語",
+        "displayName": "日本語 [GPT]",
         "vars": {
             "$bool_enabled": "オン",
             "$bool_disabled": "オフ",
@@ -564,17 +628,18 @@
     
                 "-> UNIVERSAL": "ユニバーサル",
                 "#uni_general": "一般",
-                "uni_showReflections": "反射",
+                "uni_showReflections": "リフレクション",
                 "#uni_lights": "ライト",
-                "uni_lightSelection": "選択されたライト",
-                "uni_light_GINeeded": "注意",
+                "uni_lightSelection": "選択したライト",
+                "uni_light_GINeeded": "GI 注意",
+                "uni_light_AORecommended": "AO 注意",
                 "#uni_panels": "パネル",
-                "uni_panelSelection": "選択されたパネル",
+                "uni_panelSelection": "選択したパネル",
                 "uni_panelGI": "パネルにGIを使用",
     
                 "-> HDRI": "HDRI",
-                "hdri_previewReflection": "プレビューリフレクション",
-                "hdri_hdriSelection": "選択されたHDRI",
+                "hdri_previewReflection": "リフレクションのプレビュー",
+                "hdri_hdriSelection": "選択したHDRI",
                 "hdri_customSelector": "個人用HDRI",
                 "hdri_hdriGI": "HDRIにGIを使用",
                 "!hdri_custommix": "カスタムミックスオプション",
@@ -588,14 +653,16 @@
                 "*hdri.FusionMode": "HDRIフュージョンモード",
                 "*hdri.MixMode": "HDRIミックスモード",
                 "*hdri.HDRIControls": "UIでHDRIを制御",
-                "#advanced_py": "Pythonに依存",
-                "*py.adjustGIAuto": "Py: GIを自動調整",
+                "#advanced_py": "Python 依存",
+                "*py.adjustRSAuto": "Py: レンダリング設定を自動調整",
+                "*py.override_GI": "Py: グローバルイルミネーションを上書き",
+                "*py.override_AO": "Py: アンビエントオクルージョンを上書き",
     
                 "-> DEVELOPER": "開発者",
                 "*dev.buildInterface": "インターフェースの構築",
                 "*dev.changeReleaseDate": "バージョン番号の更新",
                 "*dev.cacheLanguages": "言語のキャッシュ",
-                "*dev.buildDictionary": "ID辞書の構築",
+                "*dev.buildDictionary": "IDディクショナリの構築",
                 "!debugShowcase": "デバッグショーケース",
                 "*dev.presetOptions": "プリセットオプション（メモリ）",
                 "*dev.lightOptions": "ライトオプション（メモリ）",
@@ -603,11 +670,12 @@
                 "*dev.hdriOptions": "HDRIオプション（メモリ）"
             },
             "desc": {
-                "41": "このライトの選択にはグローバルイルミネーションが必要です"
+                "41": "このライトの選択にはグローバルイルミネーションが必要です",
+                "45": "このライトの選択にはアンビエントオクルージョンが推奨されています"
             },
             "values": {
                 "54": {
-                    "1": "アクティブ",
+                    "1": "有効",
                     "0": "オフ"
                 },
                 "20": {
@@ -617,10 +685,10 @@
                     "0": "ユニバーサル",
                     "1": "HDRI",
                     "2": "ユニバーサル + HDRI",
-                    "999": "なし（デバッグ）"
+                    "999": "なし（デバッグ用）"
                 },
                 "14": {
-                    "999": "[個人/カスタム]"
+                    "999": "[個人用/カスタム]"
                 },
                 "13": {
                     "999": "$none"
@@ -651,21 +719,21 @@
                     "0": "$bool_disabled"
                 },
                 "49": {
-                    "0": "白",
-                    "1": "黒"
+                    "0": "ホワイト",
+                    "1": "ブラック"
                 },
                 "4": {
                     "1": "$bool_enabled",
                     "0": "$bool_disabled"
                 },
                 "65": {
-                    "2": "+色",
+                    "2": "+カラー",
                     "1": "自動",
-                    "0": "輝度のみ"
+                    "0": "ルミナンスのみ"
                 },
                 "2": {
-                    "2": "色",
-                    "1": "輝度",
+                    "2": "カラー",
+                    "1": "ルミナンス",
                     "0": "両方"
                 },
                 "42": {
@@ -673,17 +741,28 @@
                     "0": "$bool_disabled"
                 },
                 "40": {
-                    "1": "$bool_enabled",
-                    "0": "$bool_disabled"
+                    "2": "GI + AO",
+                    "1": "AO",
+                    "0": "$none"
+                },
+                "36": {
+                    "1": "有効",
+                    "0": "無効",
+                    "2": "上書きなし"
+                },
+                "43": {
+                    "1": "有効",
+                    "0": "無効",
+                    "2": "上書きなし"
                 }
             }
         }
-    },
-    "pt-BR": {
-        "displayName": "Português (Brasil)",
+    },    
+    "pt_BR": {
+        "displayName": "Português (Brasil) [GPT]",
         "vars": {
-            "$bool_enabled": "Ligado",
-            "$bool_disabled": "Desligado",
+            "$bool_enabled": "ATIVADO",
+            "$bool_disabled": "DESATIVADO",
             "$none": "Nenhum"
         },
         "strings": {
@@ -691,55 +770,59 @@
                 "-> HOME": "INÍCIO",
                 "#quickSetup": "Configuração Rápida",
                 "languageSel": "Idioma",
-                "loadPresets": "Modo Padrão",
-                "presetSelection": "Padrão",
+                "loadPresets": "Modo de Presets",
+                "presetSelection": "Preset",
                 "#mainSystem": "Personalizado",
-                "selectLightset": "Tipo de Jogo de Luzes",
-                "#info": "Informação",
+                "selectLightset": "Tipo de Lightset",
+                "#info": "Informações",
                 "currentVersion": "Versão Atual",
     
                 "-> UNIVERSAL": "UNIVERSAL",
                 "#uni_general": "Geral",
-                "uni_showReflections": "Reflexões",
+                "uni_showReflections": "Reflexos",
                 "#uni_lights": "Luzes",
                 "uni_lightSelection": "Luzes Selecionadas",
-                "uni_light_GINeeded": "Atenção",
+                "uni_light_GINeeded": "Nota de GI",
+                "uni_light_AORecommended": "Nota de AO",
                 "#uni_panels": "Painéis",
                 "uni_panelSelection": "Painéis Selecionados",
-                "uni_panelGI": "Painéis Usam IG",
+                "uni_panelGI": "Painéis Usam GI",
     
                 "-> HDRI": "HDRI",
-                "hdri_previewReflection": "Visualizar Reflexão",
+                "hdri_previewReflection": "Prévia de Reflexo",
                 "hdri_hdriSelection": "HDRI Selecionado",
-                "hdri_customSelector": "HDRI Pessoal",
-                "hdri_hdriGI": "Usar IG com HDRI",
-                "!hdri_custommix": "Opções de Mix Personalizado",
-                "hdri_enableCustomMix": "Mix Personalizado",
-                "hdri_customMixValue": "Força do Mix",
+                "hdri_customSelector": "HDRI Personalizado",
+                "hdri_hdriGI": "HDRI Usa GI",
+                "!hdri_custommix": "Opções de Mistura Personalizada",
+                "hdri_enableCustomMix": "Mistura Personalizada",
+                "hdri_customMixValue": "Força de Mistura",
                 "hdri_mixType": "Cor Inicial",
     
                 "-> ADVANCED SETTINGS": "AVANÇADO",
                 "*devMode": "Modo Desenvolvedor",
                 "#advanced_hdri": "HDRI",
                 "*hdri.FusionMode": "Modo de Fusão HDRI",
-                "*hdri.MixMode": "Modo de Mixagem HDRI",
+                "*hdri.MixMode": "Modo de Mistura HDRI",
                 "*hdri.HDRIControls": "Controlar HDRI com UI",
                 "#advanced_py": "Dependente de Python",
-                "*py.adjustGIAuto": "Py: Ajustar IG Automaticamente",
+                "*py.adjustRSAuto": "Py: Ajustar RS Automaticamente",
+                "*py.override_GI": "Py: Substituir Iluminação Global",
+                "*py.override_AO": "Py: Substituir Oclusão Ambiental",
     
                 "-> DEVELOPER": "DEV",
                 "*dev.buildInterface": "Construir Interface",
                 "*dev.changeReleaseDate": "Atualizar Número da Versão",
-                "*dev.cacheLanguages": "Armazenar Idiomas",
+                "*dev.cacheLanguages": "Armazenar Idiomas em Cache",
                 "*dev.buildDictionary": "Construir Dicionário de ID",
-                "!debugShowcase": "Mostra de Depuração",
-                "*dev.presetOptions": "Opções de Padrão (Memória)",
+                "!debugShowcase": "Demonstração de Depuração",
+                "*dev.presetOptions": "Opções de Preset (Memória)",
                 "*dev.lightOptions": "Opções de Luz (Memória)",
                 "*dev.panelOptions": "Opções de Painel (Memória)",
                 "*dev.hdriOptions": "Opções de HDRI (Memória)"
             },
             "desc": {
-                "41": "Iluminação Global é necessária para essa seleção de luz"
+                "41": "Iluminação Global é necessária para essa seleção de luz",
+                "45": "Oclusão Ambiental é recomendada para essa seleção de luz"
             },
             "values": {
                 "54": {
@@ -747,7 +830,7 @@
                     "0": "Desativado"
                 },
                 "20": {
-                    "999": "SELECIONAR UM PADRÃO"
+                    "999": "SELECIONAR UM PRESET"
                 },
                 "8": {
                     "0": "Universal",
@@ -756,7 +839,7 @@
                     "999": "Nenhum (DEBUG)"
                 },
                 "14": {
-                    "999": "[Pessoal/Personalizado]"
+                    "999": "[Pessoal/Customizado]"
                 },
                 "13": {
                     "999": "$none"
@@ -776,7 +859,7 @@
                 },
                 "27": {
                     "1": "Visível",
-                    "0": "Escondido"
+                    "0": "Oculto"
                 },
                 "47": {
                     "1": "$bool_enabled",
@@ -796,8 +879,8 @@
                 },
                 "65": {
                     "2": "+Cor",
-                    "1": "Auto.",
-                    "0": "Só Luminância"
+                    "1": "Automatizado",
+                    "0": "Apenas Luminância"
                 },
                 "2": {
                     "2": "Cor",
@@ -809,8 +892,19 @@
                     "0": "$bool_disabled"
                 },
                 "40": {
-                    "1": "$bool_enabled",
-                    "0": "$bool_disabled"
+                    "2": "GI + AO",
+                    "1": "AO",
+                    "0": "$none"
+                },
+                "36": {
+                    "1": "Habilitado",
+                    "0": "Desabilitado",
+                    "2": "Sem Substituição"
+                },
+                "43": {
+                    "1": "Habilitado",
+                    "0": "Desabilitado",
+                    "2": "Sem Substituição"
                 }
             }
         }

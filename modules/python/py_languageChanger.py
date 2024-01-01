@@ -51,10 +51,10 @@ def message(msg_type, data):
 def cacheLang():
     langNull, languageSel = mainVar()
     projectDir = doc.GetDocumentPath()
-    lang_file_path = projectDir + "/data/lang.json"
+    filePath = projectDir + "/data/lang.json"
     
     try:
-        with open(lang_file_path, "r", encoding="utf-8") as file:
+        with open(filePath, "r", encoding="utf-8") as file:
             openFile = json.load(file)
     except EnvironmentError:
         err("lang file doesn't exist, you may be in another directory or data folder may have been removed")
