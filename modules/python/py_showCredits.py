@@ -42,7 +42,7 @@ def message(msg_type, data):
     elif (
         msg_type == c4d.MSG_NOTIFY_EVENT and
         data['event_data']['msg_id'] == c4d.MSG_DESCRIPTION_COMMAND and
-        data['event_data']['msg_data']['id'][1].id == 44
+        data['event_data']['msg_data']['id'][1].id == 48
     ):  
         showCredits()
 
