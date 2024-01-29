@@ -1,0 +1,149 @@
+{
+    "displayName": "English",
+    "vars": {
+        "$bool_enabled": "ON",
+        "$bool_disabled": "OFF",
+        "$none": "None"
+    },
+    "content": {
+        "controls": {
+            "-> HOME": "HOME",
+            "#quickSetup": "Quick Setup",
+            "languageSel": "Language",
+            "loadPresets": "Preset Mode",
+            "presetSelection": "Preset",
+            "#mainSystem": "Custom",
+            "selectLightset": "Lightset Type",
+            "#info": "Information",
+            "showCredits": "Show Credits",
+            "currentVersion": "Current Version",
+            "-> UNIVERSAL": "UNIVERSAL",
+            "#uni_general": "General",
+            "uni_showReflections": "Reflections",
+            "#uni_lights": "Lights",
+            "uni_lightSelection": "Lights Selected",
+            "uni_light_GINeeded": "GI Note",
+            "uni_light_AORecommended": "AO Note",
+            "#uni_panels": "Panels",
+            "uni_panelSelection": "Panels Selected",
+            "uni_panelGI": "Panels Use GI",
+            "-> HDRI": "HDRI",
+            "hdri_previewReflection": "Preview Reflection",
+            "hdri_hdriSelection": "HDRI Selected",
+            "hdri_customSelector": "Personal HDRI",
+            "hdri_hdriGI": "HDRI Use GI",
+            "!hdri_custommix": "Custom Mix Options",
+            "hdri_enableCustomMix": "Custom Mix",
+            "hdri_customMixValue": "Mix Strength",
+            "hdri_mixType": "Starting Color",
+            "-> ADVANCED SETTINGS": "ADVANCED",
+            "*devMode": "Developer Mode",
+            "#advanced_hdri": "HDRI",
+            "*hdri.FusionMode": "HDRI Fusion Mode",
+            "*hdri.MixMode": "HDRI Mix Mode",
+            "*hdri.HDRIControls": "Control Personal HDRI With UI",
+            "#advanced_py": "Python Dependant",
+            "*py.adjustRSAuto": "Py: Adjust Render Settings Automatically",
+            "*py.override_GI": "Py: Override Global Illumination",
+            "*py.override_AO": "Py: Override Ambient Occlusion",
+            "-> DEVELOPER": "DEV",
+            "*dev.buildInterface": "Build Interface",
+            "*dev.changeReleaseDate": "Update Version Number",
+            "*dev.cacheLanguages": "Cache Languages",
+            "*dev.cacheCredits": "Cache Credits",
+            "*dev.buildDictionary": "Build ID Dictionary",
+            "!debugShowcase": "Debug Showcase",
+            "*dev.presetOptions": "Preset Options (Memory)",
+            "*dev.lightOptions": "Light Options (Memory)",
+            "*dev.panelOptions": "Panel Options (Memory)",
+            "*dev.hdriOptions": "HDRI Options (Memory)"
+        },
+        "comments": {
+            "41": "Global Illumination is needed for this light selection",
+            "45": "Ambient Occlusion is recommended for this light selection"
+        },
+        "values": {
+            "54": {
+                "1": "Active",
+                "0": "Off"
+            },
+            "20": {
+                "999": "SELECT A PRESET"
+            },
+            "8": {
+                "0": "Universal",
+                "1": "HDRI",
+                "2": "Universal + HDRI",
+                "999": "None (DEBUG)"
+            },
+            "14": {
+                "999": "[Personal/Custom]"
+            },
+            "13": {
+                "999": "$none"
+            },
+            "17": {
+                "999": "$none"
+            },
+            "11": {
+                "0": "None",
+                "1": "Lights Only",
+                "2": "Panels Only",
+                "3": "Both"
+            },
+            "64": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "27": {
+                "1": "Visible",
+                "0": "Hidden"
+            },
+            "47": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "24": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "49": {
+                "0": "White",
+                "1": "Black"
+            },
+            "4": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "65": {
+                "2": "+Color",
+                "1": "Automated",
+                "0": "Luminance Only"
+            },
+            "2": {
+                "2": "Color",
+                "1": "Luminance",
+                "0": "Both"
+            },
+            "42": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "40": {
+                "2": "GI + AO",
+                "1": "AO",
+                "0": "$none"
+            },
+            "36": {
+                "1": "Enabled",
+                "0": "Disabled",
+                "2": "No Override"
+            },
+            "43": {
+                "1": "Enabled",
+                "0": "Disabled",
+                "2": "No Override"
+            }
+        }
+    }
+}

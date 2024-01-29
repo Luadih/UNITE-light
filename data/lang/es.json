@@ -1,0 +1,150 @@
+{
+    "displayName": "Español",
+    "credit": "LUADH",
+    "vars": {
+        "$bool_enabled": "Activado",
+        "$bool_disabled": "Desactivado",
+        "$none": "Ninguno"
+    },
+    "content": {
+        "controls": {
+            "-> HOME": "INICIO",
+            "#quickSetup": "Configuración Rápida",
+            "languageSel": "Idioma",
+            "loadPresets": "Modo Preset",
+            "presetSelection": "Preset Seleccionado",
+            "#mainSystem": "Config. Personalizada",
+            "selectLightset": "Tipo de Lightroom",
+            "#info": "Información",
+            "showCredits": "Creditos",
+            "currentVersion": "Versión Actual",
+            "-> UNIVERSAL": "UNIVERSAL",
+            "#uni_general": "General",
+            "uni_showReflections": "Reflejos",
+            "#uni_lights": "Luces",
+            "uni_lightSelection": "Luces Seleccionadas",
+            "uni_light_GINeeded": "Nota de IG",
+            "uni_light_AORecommended": "Nota de OA",
+            "#uni_panels": "Paneles",
+            "uni_panelSelection": "Paneles Seleccionados",
+            "uni_panelGI": "Usar IG en Paneles",
+            "-> HDRI": "HDRI",
+            "hdri_previewReflection": "Vista Previa de Reflejo",
+            "hdri_hdriSelection": "HDRI Seleccionado",
+            "hdri_customSelector": "HDRI Personalizado",
+            "hdri_hdriGI": "Usar IG en HDRI",
+            "!hdri_custommix": "Opciones de Mezcla Personalizada",
+            "hdri_enableCustomMix": "Mezcla Personalizada",
+            "hdri_customMixValue": "Intensidad de Mezcla",
+            "hdri_mixType": "Color de Inicio",
+            "-> ADVANCED SETTINGS": "AVANZADO",
+            "*devMode": "Modo Desarrollador",
+            "#advanced_hdri": "HDRI",
+            "*hdri.FusionMode": "Modo de Fusión HDRI",
+            "*hdri.MixMode": "Modo de Mezcla HDRI",
+            "*hdri.HDRIControls": "Controlar HDRI Personal con Interfaz",
+            "#advanced_py": "Dependiente de Python",
+            "*py.adjustRSAuto": "Py: Ajustar RS Automáticamente",
+            "*py.override_GI": "Py: Sobreescribir Iluminación Global",
+            "*py.override_AO": "Py: Sobreescribir Oclusión Ambiental",
+            "-> DEVELOPER": "DEV",
+            "*dev.buildInterface": "Construir Interfaz",
+            "*dev.changeReleaseDate": "Actualizar Número de Versión",
+            "*dev.cacheLanguages": "Caché de Idiomas",
+            "*dev.cacheCredits": "Cache de Creditos",
+            "*dev.buildDictionary": "Construir Diccionario de IDs",
+            "!debugShowcase": "Valores Debug",
+            "*dev.presetOptions": "Opciones de Preset (Memoria)",
+            "*dev.lightOptions": "Opciones de Luces (Memoria)",
+            "*dev.panelOptions": "Opciones de Paneles (Memoria)",
+            "*dev.hdriOptions": "Opciones de HDRI (Memoria)"
+        },
+        "comments": {
+            "41": "Se necesita activar la Iluminación Global para esta selección de luces",
+            "45": "Se recomienda activar la Oclusión Ambiental para esta selección de luces"
+        },
+        "values": {
+            "54": {
+                "1": "Activo",
+                "0": "Apagado"
+            },
+            "20": {
+                "999": "SELECCIONAR UN PRESET"
+            },
+            "8": {
+                "0": "Universal",
+                "1": "HDRI",
+                "2": "Universal + HDRI",
+                "999": "Desactivado (DEBUG)"
+            },
+            "14": {
+                "999": "[Personalizado/Personal]"
+            },
+            "13": {
+                "999": "$none"
+            },
+            "17": {
+                "999": "$none"
+            },
+            "11": {
+                "0": "Ninguno",
+                "1": "Solo Luces",
+                "2": "Solo Paneles",
+                "3": "Ambos"
+            },
+            "64": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "27": {
+                "1": "Visible",
+                "0": "Oculta"
+            },
+            "47": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "24": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "49": {
+                "0": "Blanco",
+                "1": "Negro"
+            },
+            "4": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "65": {
+                "2": "+Color",
+                "1": "Automático",
+                "0": "Solo Luminancia"
+            },
+            "2": {
+                "2": "Color",
+                "1": "Luminancia",
+                "0": "Ambos"
+            },
+            "42": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "40": {
+                "2": "IG + OA",
+                "1": "OA",
+                "0": "$none"
+            },
+            "36": {
+                "1": "Activada",
+                "0": "Desactivada",
+                "2": "No Reemplazar"
+            },
+            "43": {
+                "1": "Activada",
+                "0": "Desactivada",
+                "2": "No Reemplazar"
+            }
+        }
+    }
+}

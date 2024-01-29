@@ -1,6 +1,7 @@
 # pyright: reportMissingImports=false, reportUndefinedVariable=false
 import c4d
 import json
+import os
 
 def err(error):
     file = op.GetObject().GetName()
@@ -51,28 +52,39 @@ def message(msg_type, data):
 def cacheLang():
     langNull, languageSel = mainVar()
     projectDir = doc.GetDocumentPath()
-    filePath = projectDir + "/data/lang.json"
-    
+    langPath = projectDir + "/data/lang/"
+    langRawData = {}
+
     try:
-        with open(filePath, "r", encoding="utf-8") as file:
-            openFile = json.load(file)
+        langFiles = os.listdir(langPath)
     except EnvironmentError:
-        err("lang file doesn't exist, you may be in another directory or data folder may have been removed")
-        return
-    except TypeError:
-        err("the function 'open' in Python triggered a TypeError, update C4D to at least R23")
-        c4d.gui.MessageDialog("Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.")
-        return
-    except json.JSONDecodeError:
-        err("lang json file is not structured correctly")
+        err("lang folder doesn't exist or it wasn't found.")
         return
 
-    if not openFile: err("there are no languages in the language file"); return
+    for filename in langFiles:
+        if filename.endswith('.json'):
+            name = os.path.splitext(filename)[0]
+            filePath = os.path.join(langPath, filename)
+
+            try:
+                with open(filePath, "r", encoding="utf-8") as file:
+                    data = json.load(file)
+                    if not data: err("there is no data inside '%s' lang file."); return
+                    langRawData[name] = data
+            except TypeError:
+                err("the function 'open' in Python triggered a TypeError, update C4D to at least R23")
+                c4d.gui.MessageDialog("Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.")
+                return
+            except json.JSONDecodeError:
+                err("'%s' lang file is not structured correctly" % filename)
+                continue
+
+    if not langRawData: err("lang raw data is empty, returning"); return
 
     # Sorts the dict just in case
-    myKeys = list(openFile.keys())
+    myKeys = list(langRawData.keys())
     myKeys.sort()
-    sorted_dict = {i: openFile[i] for i in myKeys}
+    sorted_dict = {i: langRawData[i] for i in myKeys}
 
     cacheData = usePseudoVariables(sorted_dict)
     langNull[c4d.ID_USERDATA, 1] = json.dumps(cacheData, indent=4, ensure_ascii=False)
@@ -108,19 +120,26 @@ def changeLanguage():
     langData = eval(langNull[c4d.ID_USERDATA, 1])
     activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
     langDisplay = langData[activeLang]["displayName"]
-    stringsDir = langData[activeLang]["strings"]
+    stringsDir = langData[activeLang]["content"]
 
     if not stringsDir:
         err("Language '%s' was made using the wrong format" % langDisplay)
         return None
+    
+    try:
+        langCredit = langData[activeLang]["credit"]
+        showUserData(True, 53)
+        uiNull[c4d.ID_USERDATA, 53] = langCredit
+    except KeyError:
+        showUserData(False, 53)
 
     checks = list(stringsDir)
     nullBc = uiNull.GetUserDataContainer()
 
-    if "interface" in checks:
-        interfaceChanges = []
+    if "controls" in checks:
+        controlChanges = []
 
-        for key in stringsDir["interface"]:
+        for key in stringsDir["controls"]:
             for udId, bc in nullBc:
                 udName = bc.GetString(c4d.DESC_NAME)
                 udsName = bc.GetString(c4d.DESC_SHORT_NAME)
@@ -135,9 +154,9 @@ def changeLanguage():
                     nameSpace = c4d.DESC_SHORT_NAME
 
                 if udDefName == key:
-                    interfaceChanges.append((udId, nameSpace, str(stringsDir["interface"][key]), bc))
+                    controlChanges.append((udId, nameSpace, str(stringsDir["controls"][key]), bc))
 
-        for udId, key, value, container in interfaceChanges:
+        for udId, key, value, container in controlChanges:
             container[key] = value
             uiNull.SetUserDataContainer(udId, container)
 
@@ -157,9 +176,9 @@ def changeLanguage():
 
             uiNull.SetUserDataContainer(udId, container)
 
-    if "desc" in checks:
-        for key in stringsDir["desc"]:
-            uiNull[c4d.ID_USERDATA, int(key)] = stringsDir["desc"][key]
+    if "comment" in checks:
+        for key in stringsDir["comment"]:
+            uiNull[c4d.ID_USERDATA, int(key)] = stringsDir["comment"][key]
 
 def accessDictionary_by_UdID(userdataid, directory):
     dictNull = essentials()[1]
@@ -172,17 +191,25 @@ def accessDictionary_by_UdID(userdataid, directory):
 
 def usePseudoVariables(jsonFile):
     def replaceVars(jsonFile, language, stringGroup, vars):
-        stringsCont = jsonFile[language]["strings"][stringGroup]
+        stringsCont = jsonFile[language]["content"][stringGroup]
         stringMemory = [(data, stringsCont[data]) for data in stringsCont]
         valueChanges = []
 
         for index, data in enumerate(stringMemory):
-            if any(x in list(vars) for x in (data[1].values() if isinstance(data[1], dict) else [data[1]])):
-                temp = str(data[1])
-                for var in vars:
-                    temp = temp.replace(var, vars[var])
+            valueGotModified = False
+            if isinstance(data[1], dict):
+                value = str(data[1])
+            else: value = data[1]
 
-                valueChanges.append((stringMemory[index][0], eval(temp)))
+            for variable in vars.keys():
+                if variable in value:
+                    valueModified = value.replace(variable, vars[variable])
+                    valueGotModified = True
+            if not valueGotModified: continue
+
+            try: valueModified = eval(valueModified)
+            except SyntaxError: pass
+            valueChanges.append((stringMemory[index][0], valueModified))
                 
         for key, content in valueChanges:
             stringsCont[key] = content
@@ -190,13 +217,26 @@ def usePseudoVariables(jsonFile):
     languages = list(jsonFile)
 
     for language in languages:
-        try: translationGroups = list(jsonFile[language]["strings"])
-        except KeyError: err("Language %s doesn't have any translation strings" % language)
+        try: translationGroups = list(jsonFile[language]["content"])
+        except KeyError: err("Language %s doesn't have any translation strings" % language); continue
 
         try:
             vars = jsonFile[language]["vars"]
             for group in translationGroups:
                 replaceVars(jsonFile, language, group, vars)
-        except KeyError: err("Language %s doesn't have variables (Skipping)" % language)
+        except KeyError: err("Language %s doesn't have variables (Skipping)" % language); continue
 
     return jsonFile
+
+def showUserData(trigger, target):
+    controller = essentials()[0]
+    if target == []: err("targetData is empty"); return
+    if type(target) == int: target = [target]
+
+    for targetId in target:
+        udId, bc = accessDictionary_by_UdID(targetId, controller)
+        bc[c4d.DESC_HIDE] = trigger == 0
+        modifications = [(udId, bc)]
+    
+    for descId, container in modifications:
+        controller.SetUserDataContainer(descId, container)
