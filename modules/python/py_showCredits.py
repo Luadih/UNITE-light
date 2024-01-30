@@ -24,7 +24,6 @@ def creditsNull_func():
 
     return creditsNull
 
-
 def main():
     uiNull = essentials()[0]
 
@@ -96,7 +95,20 @@ def showCredits():
     doc.InsertObject(creditsObj)
     c4d.EventAdd()
     
-    c4d.gui.MessageDialog("Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project.")
+    try:
+        c4d.gui.MessageDialog(loadMessageTranslation())
+    except:
+        c4d.gui.MessageDialog("Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project.")
+
+def loadMessageTranslation():
+    uiNull = essentials()[0]
+    langNull = doc.SearchObject("py_languageChanger")
+    languageSel = 31
+    idCache = eval(langNull[c4d.ID_USERDATA, 2])
+    langData = eval(langNull[c4d.ID_USERDATA, 1])
+    activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
+    messageContent = langData[activeLang]["content"]["message"]["showCredits"]
+    return messageContent
 
 def creditsObjCreation():
     obj = c4d.BaseObject(c4d.Onull)

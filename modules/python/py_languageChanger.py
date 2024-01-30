@@ -73,7 +73,10 @@ def cacheLang():
                     langRawData[name] = data
             except TypeError:
                 err("the function 'open' in Python triggered a TypeError, update C4D to at least R23")
-                c4d.gui.MessageDialog("Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.")
+                try:
+                    c4d.gui.MessageDialog(loadMessageTranslation())
+                except:
+                    c4d.gui.MessageDialog("Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.")
                 return
             except json.JSONDecodeError:
                 err("'%s' lang file is not structured correctly" % filename)
@@ -97,6 +100,16 @@ def cacheLang():
     print("UN: Cached %s languages to UNITE" % len(langDict))
 
     loadLanguagesToUi(languageSel, langDict)
+
+def loadMessageTranslation():
+    uiNull = essentials()[0]
+    langNull = doc.SearchObject("py_languageChanger")
+    languageSel = 31
+    idCache = eval(langNull[c4d.ID_USERDATA, 2])
+    langData = eval(langNull[c4d.ID_USERDATA, 1])
+    activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
+    messageContent = langData[activeLang]["content"]["message"]["cacheLanguagesFailed"]
+    return messageContent
 
 def loadLanguagesToUi(controllerId, langDict):
     uiNull = essentials()[0]

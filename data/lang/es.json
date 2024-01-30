@@ -145,6 +145,10 @@
                 "0": "Desactivada",
                 "2": "No Reemplazar"
             }
+        },
+        "message": {
+            "cacheLanguagesFailed": "Es imposible hacer un cache de los idiomas en esta version de C4D.\nPrueba a actualizar como minimo a la version R23 de Cinema 4D para que esta funcion este disponible.\n*Esto no significa que el selector de idiomas no funcione con idiomas ya guardados en el cache.",
+            "showCredits": "El nulo con los creditos fue creado exitosamente.\nLos creditos pueden ser leidos en el nulo 'UNITE Credits' que se encuentra en la cima del proyecto."
         }
     }
 }
