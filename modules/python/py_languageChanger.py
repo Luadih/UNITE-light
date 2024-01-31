@@ -203,41 +203,30 @@ def accessDictionary_by_UdID(userdataid, directory):
     return udId, bc
 
 def usePseudoVariables(jsonFile):
-    def replaceVars(jsonFile, language, stringGroup, vars):
-        stringsCont = jsonFile[language]["content"][stringGroup]
-        stringMemory = [(data, stringsCont[data]) for data in stringsCont]
-        valueChanges = []
+    def replaceVars(stringsCont, vars):
+        for key, value in stringsCont.items():
+            if isinstance(value, dict):
+                for k, v in value.items():
+                    for var, replacement in vars.items():
+                        if var in v:
+                            value[k] = v.replace(var, replacement)
+            elif isinstance(value, str):
+                for var, replacement in vars.items():
+                    if var in value:
+                        stringsCont[key] = value.replace(var, replacement)
 
-        for index, data in enumerate(stringMemory):
-            valueGotModified = False
-            if isinstance(data[1], dict):
-                value = str(data[1])
-            else: value = data[1]
+    for lang, langData in jsonFile.items():
+        try: 
+            langContent = langData.get("content", {})
+            if not langContent: raise KeyError("ALERT: Language %s doesn't have any translation strings" % lang)
 
-            for variable in vars.keys():
-                if variable in value:
-                    valueModified = value.replace(variable, vars[variable])
-                    valueGotModified = True
-            if not valueGotModified: continue
+            varsDict = langData.get("vars", {})
+            if not varsDict: continue
 
-            try: valueModified = eval(valueModified)
-            except SyntaxError: pass
-            valueChanges.append((stringMemory[index][0], valueModified))
-                
-        for key, content in valueChanges:
-            stringsCont[key] = content
-    
-    languages = list(jsonFile)
-
-    for language in languages:
-        try: translationGroups = list(jsonFile[language]["content"])
-        except KeyError: err("Language %s doesn't have any translation strings" % language); continue
-
-        try:
-            vars = jsonFile[language]["vars"]
-            for group in translationGroups:
-                replaceVars(jsonFile, language, group, vars)
-        except KeyError: err("Language %s doesn't have variables (Skipping)" % language); continue
+            for group, stringsCont in langContent.items():
+                replaceVars(stringsCont, varsDict)
+        except KeyError as errorMessage:
+            err(str(errorMessage))
 
     return jsonFile
 
