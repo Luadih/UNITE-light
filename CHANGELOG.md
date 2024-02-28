@@ -17,7 +17,7 @@ In case you want to read the full changelog, read the github release post, it al
 - Introduced 4 new setups/presets :
     - **BIT Deluxe :** An import of the BIT Lightroom's Contrast setup, slightly improved panel wise and with an added HDRI
     - **Ultimate Basics :** An import of the iconic David. F's Ultimate Lights, mostly not touched aside from some slight tweaks
-    - **Direct Point :** An import of Ricky's Glowroom, calibrated to match the other setups and to add for the old Brazilian look
+    - **Direct Point :** An import of Ricky Bustillos's Glowroom, calibrated to match the other setups and to add for the old Brazilian look
     - **Nikko :** An all new test to make a consistent slightly plain look with some highlights up and down!
 - Updated "JuanFX" setup to the 2023 version
 - "Parallel" setup renamed to "CORE"
