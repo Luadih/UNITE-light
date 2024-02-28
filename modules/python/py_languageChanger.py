@@ -189,9 +189,9 @@ def changeLanguage():
 
             uiNull.SetUserDataContainer(udId, container)
 
-    if "comment" in checks:
-        for key in stringsDir["comment"]:
-            uiNull[c4d.ID_USERDATA, int(key)] = stringsDir["comment"][key]
+    if "comments" in checks:
+        for key in stringsDir["comments"]:
+            uiNull[c4d.ID_USERDATA, int(key)] = stringsDir["comments"][key]
 
 def accessDictionary_by_UdID(userdataid, directory):
     dictNull = essentials()[1]
