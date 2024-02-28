@@ -1,6 +1,6 @@
 ## For more detailed changelogs you can check the github releases page.
 
-[W.I.P]
+[R20240228]
 
 The changelog for this version is incredibly long, so only things worthwhile to standard users will be here.
 In case you want to read the full changelog, read the github release post, it also contains comments on some of the changes.
@@ -13,6 +13,7 @@ In case you want to read the full changelog, read the github release post, it al
 - Added an HDRI Mix "mode" to support more setups other than standard "Luminance != 100%"
 - Deprecated lights "Random Seed"
 - Made HDRI Preview only load while the HDRI is actually being used
+- Fixed being able to select a preset while Preset Mode was turned off
 
 - Introduced 4 new setups/presets :
     - **BIT Deluxe :** An import of the BIT Lightroom's Contrast setup, slightly improved panel wise and with an added HDRI
