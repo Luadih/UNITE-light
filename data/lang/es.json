@@ -18,6 +18,8 @@
             "#info": "Información",
             "showCredits": "Creditos",
             "currentVersion": "Versión Actual",
+            "languageCredit": "Creditos.T",
+
             "-> UNIVERSAL": "UNIVERSAL",
             "#uni_general": "General",
             "uni_showReflections": "Reflejos",
@@ -27,16 +29,20 @@
             "uni_light_AORecommended": "Nota de OA",
             "#uni_panels": "Paneles",
             "uni_panelSelection": "Paneles Seleccionados",
+            "uni_panel_transparency": "Ver Paneles en Transparencia",
             "uni_panelGI": "Usar IG en Paneles",
+
             "-> HDRI": "HDRI",
             "hdri_previewReflection": "Vista Previa de Reflejo",
             "hdri_hdriSelection": "HDRI Seleccionado",
             "hdri_customSelector": "HDRI Personalizado",
+            "hdri_transparency": "Ver HDRI en Transparencia",
             "hdri_hdriGI": "Usar IG en HDRI",
             "!hdri_custommix": "Opciones de Mezcla Personalizada",
             "hdri_enableCustomMix": "Mezcla Personalizada",
             "hdri_customMixValue": "Intensidad de Mezcla",
             "hdri_mixType": "Color de Inicio",
+
             "-> ADVANCED SETTINGS": "AVANZADO",
             "*devMode": "Modo Desarrollador",
             "#advanced_hdri": "HDRI",
@@ -44,9 +50,11 @@
             "*hdri.MixMode": "Modo de Mezcla HDRI",
             "*hdri.HDRIControls": "Controlar HDRI Personal con Interfaz",
             "#advanced_py": "Dependiente de Python",
+            "*py.shadowsControl": "Py: Sobreescribir Sombras",
             "*py.adjustRSAuto": "Py: Ajustar RS Automáticamente",
             "*py.override_GI": "Py: Sobreescribir Iluminación Global",
             "*py.override_AO": "Py: Sobreescribir Oclusión Ambiental",
+
             "-> DEVELOPER": "DEV",
             "*dev.buildInterface": "Construir Interfaz",
             "*dev.changeReleaseDate": "Actualizar Número de Versión",
@@ -132,7 +140,7 @@
             },
             "40": {
                 "2": "IG + OA",
-                "1": "OA",
+                "1": "IG",
                 "0": "$none"
             },
             "36": {
@@ -143,6 +151,23 @@
             "43": {
                 "1": "Activada",
                 "0": "Desactivada",
+                "2": "No Reemplazar"
+            },
+            "52": {
+                "0": "No",
+                "1": "Solo con Transparencia",
+                "2": "Solo con Refracción",
+                "3": "En Ambas"
+            },
+            "56": {
+                "0": "No",
+                "1": "Solo con Transparencia",
+                "2": "Solo con Refracción",
+                "3": "En Ambas"
+            },
+            "51": {
+                "1": "Activadas",
+                "0": "Desactivadas",
                 "2": "No Reemplazar"
             }
         },

@@ -17,6 +17,8 @@
             "#info": "Information",
             "showCredits": "Show Credits",
             "currentVersion": "Current Version",
+            "languageCredit": "T.Credit",
+
             "-> UNIVERSAL": "UNIVERSAL",
             "#uni_general": "General",
             "uni_showReflections": "Reflections",
@@ -26,16 +28,20 @@
             "uni_light_AORecommended": "AO Note",
             "#uni_panels": "Panels",
             "uni_panelSelection": "Panels Selected",
+            "uni_panel_transparency": "Panels Use Transparency",
             "uni_panelGI": "Panels Use GI",
+
             "-> HDRI": "HDRI",
             "hdri_previewReflection": "Preview Reflection",
             "hdri_hdriSelection": "HDRI Selected",
             "hdri_customSelector": "Personal HDRI",
+            "hdri_transparency": "HDRI Use Transparency",
             "hdri_hdriGI": "HDRI Use GI",
             "!hdri_custommix": "Custom Mix Options",
             "hdri_enableCustomMix": "Custom Mix",
             "hdri_customMixValue": "Mix Strength",
             "hdri_mixType": "Starting Color",
+
             "-> ADVANCED SETTINGS": "ADVANCED",
             "*devMode": "Developer Mode",
             "#advanced_hdri": "HDRI",
@@ -43,9 +49,11 @@
             "*hdri.MixMode": "HDRI Mix Mode",
             "*hdri.HDRIControls": "Control Personal HDRI With UI",
             "#advanced_py": "Python Dependant",
+            "*py.shadowsControl": "Py: Override Shadows",
             "*py.adjustRSAuto": "Py: Adjust Render Settings Automatically",
             "*py.override_GI": "Py: Override Global Illumination",
             "*py.override_AO": "Py: Override Ambient Occlusion",
+
             "-> DEVELOPER": "DEV",
             "*dev.buildInterface": "Build Interface",
             "*dev.changeReleaseDate": "Update Version Number",
@@ -131,7 +139,7 @@
             },
             "40": {
                 "2": "GI + AO",
-                "1": "AO",
+                "1": "GI",
                 "0": "$none"
             },
             "36": {
@@ -140,6 +148,23 @@
                 "2": "No Override"
             },
             "43": {
+                "1": "Enabled",
+                "0": "Disabled",
+                "2": "No Override"
+            },
+            "52": {
+                "0": "None",
+                "1": "Transparency Only",
+                "2": "Refraction Only",
+                "3": "Both"
+            },
+            "56": {
+                "0": "None",
+                "1": "Transparency Only",
+                "2": "Refraction Only",
+                "3": "Both"
+            },
+            "51": {
                 "1": "Enabled",
                 "0": "Disabled",
                 "2": "No Override"
