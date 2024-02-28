@@ -1,6 +1,5 @@
 {
     "displayName": "Español",
-    "credit": "LUADH",
     "vars": {
         "$bool_enabled": "Activado",
         "$bool_disabled": "Desactivado",
@@ -18,7 +17,7 @@
             "#info": "Información",
             "showCredits": "Creditos",
             "currentVersion": "Versión Actual",
-            "languageCredit": "Creditos.T",
+            "languageCredit": "Creditos de la Traducción:",
 
             "-> UNIVERSAL": "UNIVERSAL",
             "#uni_general": "General",
