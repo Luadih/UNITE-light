@@ -93,7 +93,6 @@ def showCredits():
             creditsObj[stringUD] = str(credit)
 
     doc.InsertObject(creditsObj)
-    c4d.EventAdd()
     
     try:
         c4d.gui.MessageDialog(loadMessageTranslation())
