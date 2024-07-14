@@ -29,6 +29,16 @@ def buildDictionary():
     uiNull = essentials()
     opObj = op.GetObject()
     userData = uiNull.GetUserDataContainer()
-    userDataDict = {element[0][1].id: index for index, element in enumerate(userData)}
+    userDataDictByID = {element[0][1].id: index for index, element in enumerate(userData)}
+    
+    userDataDictByName = {}
+    for index, element in enumerate(userData):
+        if element[0][1].dtype in [11] or element[0][1].id in [21, 25]:
+            nameToSave = c4d.DESC_SHORT_NAME
+        else:
+            nameToSave = c4d.DESC_NAME
+        
+        userDataDictByName.update({element[1].GetString(nameToSave): index})
 
-    opObj[c4d.ID_USERDATA, 1] = str(userDataDict)
+    opObj[c4d.ID_USERDATA, 1] = str(userDataDictByID)
+    opObj[c4d.ID_USERDATA, 2] = str(userDataDictByName)

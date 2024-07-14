@@ -106,7 +106,7 @@ def loadMessageTranslation():
     idCache = eval(langNull[c4d.ID_USERDATA, 2])
     langData = eval(langNull[c4d.ID_USERDATA, 1])
     activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
-    messageContent = langData[activeLang]["content"]["message"]["showCredits"]
+    messageContent = langData[activeLang]["contains"]["popup"]["creditsCreated"]
     return messageContent
 
 def creditsObjCreation():

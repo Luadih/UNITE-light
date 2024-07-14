@@ -108,7 +108,7 @@ def loadMessageTranslation():
     idCache = eval(langNull[c4d.ID_USERDATA, 2])
     langData = eval(langNull[c4d.ID_USERDATA, 1])
     activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
-    messageContent = langData[activeLang]["content"]["message"]["cacheLanguagesFailed"]
+    messageContent = langData[activeLang]["contains"]["popup"]["cacheLanguagesError"]
     return messageContent
 
 def loadLanguagesToUi(controllerId, langDict):
@@ -133,7 +133,7 @@ def changeLanguage():
     langData = eval(langNull[c4d.ID_USERDATA, 1])
     activeLang = idCache.get(str(uiNull[c4d.ID_USERDATA, languageSel]))
     langDisplay = langData[activeLang]["displayName"]
-    stringsDir = langData[activeLang]["content"]
+    stringsDir = langData[activeLang]["contains"]
 
     if not stringsDir:
         err("Language '%s' was made using the wrong format" % langDisplay)
@@ -147,38 +147,18 @@ def changeLanguage():
         showUserData(False, 53)
 
     checks = list(stringsDir)
-    nullBc = uiNull.GetUserDataContainer()
 
-    if "controls" in checks:
-        controlChanges = []
-
-        for key in stringsDir["controls"]:
-            for udId, bc in nullBc:
-                udName = bc.GetString(c4d.DESC_NAME)
-                udsName = bc.GetString(c4d.DESC_SHORT_NAME)
-
-                if udName != key and udsName != key: continue
-
-                if udId[1].dtype in [11] or udId[1].id in [21, 25]:
-                    udDefName = udsName
-                    nameSpace = c4d.DESC_NAME
-                else:
-                    udDefName = udName
-                    nameSpace = c4d.DESC_SHORT_NAME
-
-                if udDefName == key:
-                    controlChanges.append((udId, nameSpace, str(stringsDir["controls"][key]), bc))
-
-        for udId, key, value, container in controlChanges:
-            container[key] = value
-            uiNull.SetUserDataContainer(udId, container)
+    if "interface" in checks: recursiveStringChange(stringsDir["interface"])
 
     if "values" in checks:
         valueChanges = []
 
         for key, value in stringsDir["values"].items():
-            udId, bc = accessDictionary_by_UdID(int(key), uiNull)
-            valueChanges.append((value, udId, bc))
+            try:
+                udId, bc = accessDictionary_by_Name(key, uiNull)
+                valueChanges.append((value, udId, bc))
+            except:
+                err(key + " was not found in the user interface. (Skipping) [from 'values' translation]")
 
         for values, udId, container in valueChanges:
             containerValues = container[14]
@@ -189,9 +169,59 @@ def changeLanguage():
 
             uiNull.SetUserDataContainer(udId, container)
 
-    if "comments" in checks:
-        for key in stringsDir["comments"]:
-            uiNull[c4d.ID_USERDATA, int(key)] = stringsDir["comments"][key]
+    if "notes" in checks:
+        for key in stringsDir["notes"]:
+            try:
+                udID, bc = accessDictionary_by_Name(key, uiNull)
+                uiNull[c4d.ID_USERDATA, udID[1].id] = stringsDir["notes"][key]
+            except KeyError:
+                err(key + " was not found in the user interface. (Skipping) [from 'notes' translation]")
+
+def recursiveStringChange(data):
+    uiNull = essentials()[0]
+    tabIds = {
+        "tab.home": 1,
+        "tab.universal": 9,
+        "tab.hdri": 32,
+        "tab.advanced": 37,
+        "tab.developer": 5
+    }
+    
+    for key, value in data.items():
+        if key.startswith("tab."):
+            tab_udID, tab_bc = accessDictionary_by_UdID(tabIds.get(key), uiNull)
+            
+            tab_bc[c4d.DESC_SHORT_NAME] = value["name"]
+            if "titleName" in value:
+                tab_bc[c4d.DESC_NAME] = "-> " + value["titleName"]
+            else:
+                tab_bc[c4d.DESC_NAME] = "-> " + value["name"]
+            
+            uiNull.SetUserDataContainer(tab_udID, tab_bc)
+            
+            recursiveStringChange(value["contains"])
+        elif isinstance(value, dict) and "contains" in value:
+            try:
+                udID, bc = accessDictionary_by_Name(key, uiNull)
+                
+                bc[c4d.DESC_NAME] = value["name"]
+                
+                uiNull.SetUserDataContainer(udID, bc)
+            except KeyError:
+                err(key + " was not found in the user interface. (Skipping)")
+            recursiveStringChange(value["contains"])
+        else:
+            try:
+                udID, bc = accessDictionary_by_Name(key, uiNull)
+                
+                if udID[1].dtype in [11]:
+                    bc[c4d.DESC_NAME] = value
+                else:
+                    bc[c4d.DESC_SHORT_NAME] = value
+                
+                uiNull.SetUserDataContainer(udID, bc)
+            except KeyError:
+                err(key + " was not found in the user interface. (Skipping)")
 
 def accessDictionary_by_UdID(userdataid, directory):
     dictNull = essentials()[1]
@@ -199,6 +229,15 @@ def accessDictionary_by_UdID(userdataid, directory):
     userDataDict = eval(dictNull[c4d.ID_USERDATA, 1])
 
     udId, bc = userData[userDataDict[userdataid]]
+
+    return udId, bc
+
+def accessDictionary_by_Name(udName, directory):
+    dictNull = essentials()[1]
+    userData = directory.GetUserDataContainer()
+    userDataDict = eval(dictNull[c4d.ID_USERDATA, 2])
+
+    udId, bc = userData[userDataDict[udName]]
 
     return udId, bc
 
@@ -217,10 +256,10 @@ def usePseudoVariables(jsonFile):
 
     for lang, langData in jsonFile.items():
         try: 
-            langContent = langData.get("content", {})
+            langContent = langData.get("contains", {})
             if not langContent: raise KeyError("ALERT: Language %s doesn't have any translation strings" % lang)
 
-            varsDict = langData.get("vars", {})
+            varsDict = langData.get("variables", {})
             if not varsDict: continue
 
             for group, stringsCont in langContent.items():
