@@ -97,8 +97,8 @@
             "display.AORecommendedWarning": "Se recomienda activar la Oclusión Ambiental para esta selección de luces"
         },
         "popup": {
-                "cacheLanguagesError": "Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.",
-                "creditsCreated": "Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project."
+                "cacheLanguagesError": "Es imposible hacer un cache de los idiomas en esta version de C4D.\nPrueba a actualizar como minimo a la version R23 de Cinema 4D para que esta funcion este disponible.\n*Esto no significa que el selector de idiomas no funcione con idiomas ya guardados en el cache.",
+                "creditsCreated": "El nulo con los creditos fue creado exitosamente.\nLos creditos pueden ser leidos en el nulo 'UNITE Credits' que se encuentra en la cima del proyecto."
         },
         "values": {
             "presetToggle": {
