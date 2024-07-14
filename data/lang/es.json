@@ -1,178 +1,204 @@
 {
     "displayName": "Español",
-    "vars": {
+    "variables": {
         "$bool_enabled": "Activado",
         "$bool_disabled": "Desactivado",
         "$none": "Ninguno"
     },
-    "content": {
-        "controls": {
-            "-> HOME": "INICIO",
-            "#quickSetup": "Configuración Rápida",
-            "languageSel": "Idioma",
-            "loadPresets": "Modo Preset",
-            "presetSelection": "Preset Seleccionado",
-            "#mainSystem": "Config. Personalizada",
-            "selectLightset": "Tipo de Lightroom",
-            "#info": "Información",
-            "showCredits": "Creditos",
-            "currentVersion": "Versión Actual",
-            "languageCredit": "Creditos de la Traducción:",
-
-            "-> UNIVERSAL": "UNIVERSAL",
-            "#uni_general": "General",
-            "uni_showReflections": "Reflejos",
-            "#uni_lights": "Luces",
-            "uni_lightSelection": "Luces Seleccionadas",
-            "uni_light_GINeeded": "Nota de IG",
-            "uni_light_AORecommended": "Nota de OA",
-            "#uni_panels": "Paneles",
-            "uni_panelSelection": "Paneles Seleccionados",
-            "uni_panel_transparency": "Ver Paneles en Transparencia",
-            "uni_panelGI": "Usar IG en Paneles",
-
-            "-> HDRI": "HDRI",
-            "hdri_previewReflection": "Vista Previa de Reflejo",
-            "hdri_hdriSelection": "HDRI Seleccionado",
-            "hdri_customSelector": "HDRI Personalizado",
-            "hdri_transparency": "Ver HDRI en Transparencia",
-            "hdri_hdriGI": "Usar IG en HDRI",
-            "!hdri_custommix": "Opciones de Mezcla Personalizada",
-            "hdri_enableCustomMix": "Mezcla Personalizada",
-            "hdri_customMixValue": "Intensidad de Mezcla",
-            "hdri_mixType": "Color de Inicio",
-
-            "-> ADVANCED SETTINGS": "AVANZADO",
-            "*devMode": "Modo Desarrollador",
-            "#advanced_hdri": "HDRI",
-            "*hdri.FusionMode": "Modo de Fusión HDRI",
-            "*hdri.MixMode": "Modo de Mezcla HDRI",
-            "*hdri.HDRIControls": "Controlar HDRI Personal con Interfaz",
-            "#advanced_py": "Dependiente de Python",
-            "*py.shadowsControl": "Py: Sobreescribir Sombras",
-            "*py.adjustRSAuto": "Py: Ajustar RS Automáticamente",
-            "*py.override_GI": "Py: Sobreescribir Iluminación Global",
-            "*py.override_AO": "Py: Sobreescribir Oclusión Ambiental",
-
-            "-> DEVELOPER": "DEV",
-            "*dev.buildInterface": "Construir Interfaz",
-            "*dev.changeReleaseDate": "Actualizar Número de Versión",
-            "*dev.cacheLanguages": "Caché de Idiomas",
-            "*dev.cacheCredits": "Cache de Creditos",
-            "*dev.buildDictionary": "Construir Diccionario de IDs",
-            "!debugShowcase": "Valores Debug",
-            "*dev.presetOptions": "Opciones de Preset (Memoria)",
-            "*dev.lightOptions": "Opciones de Luces (Memoria)",
-            "*dev.panelOptions": "Opciones de Paneles (Memoria)",
-            "*dev.hdriOptions": "Opciones de HDRI (Memoria)"
+    "contains": {
+        "interface": {
+            "tab.home": {
+                "name": "INICIO",
+                "contains": {
+                    "separator.quickSetup": "Configuración Rápida",
+                    "langSelector": "Idioma",
+                    "presetToggle": "Modo Preset",
+                    "presetSelector": "Preset Seleccionado",
+                    "separator.mainOptions": "Config. Personalizada",
+                    "selectSetType": "Tipo de Lightroom",
+                    "separator.info": "Información",
+                    "button.showCredits": "Creditos",
+                    "display.version": "Versión Actual",
+                    "display.langCredit": "Creditos de la Traducción:"
+                }
+            },
+            "tab.universal": {
+                "name": "UNIVERSAL",
+                "contains": {
+                    "separator.univGeneral": "General",
+                    "univReflectionVisibility": "Reflejos",
+                    "separator.univLights": "Luces",
+                    "univLightSelector": "Luces Seleccionadas",
+                    "display.GINeededWarning": "Nota de IG",
+                    "display.AORecommendedWarning": "Nota de OA",
+                    "separator.univPanels": "Paneles",
+                    "univPanelSelector": "Paneles Seleccionados",
+                    "univPanelTransparency": "Ver Paneles en Transparencia",
+                    "univPanelGI": "Usar IG en Paneles"
+                }
+            },
+            "tab.hdri": {
+                "name": "HDRI",
+                "contains": {
+                    "hdriPreviewReflection": "Vista Previa de Reflejo",
+                    "hdriSelector": "HDRI Seleccionado",
+                    "hdriCustomSelector": "HDRI Personalizado",
+                    "hdriTransparency": "Ver HDRI en Transparencia",
+                    "hdriGI": "Usar IG en HDRI",
+                    "group.hdriMixOptions": {
+                        "name": "Opciones de Mezcla Personalizada",
+                        "contains": {
+                            "hdriMixToggle": "Mezcla Personalizada",
+                            "hdriMixValue": "Intensidad de Mezcla",
+                            "hdriMixStartsOn": "Color de Inicio"
+                        }
+                    }
+                }
+            },
+            "tab.advanced": {
+                "name": "AVANZADO",
+                "titleName": "AJUSTES AVANZADOS",
+                "contains": {
+                    "devModeToggle": "Modo Desarrollador",
+                    "separator.advancedHDRI": "HDRI",
+                    "advanced_hdri.useColorChannel": "Modo de Fusión HDRI",
+                    "advanced_hdri.mixValueChanges": "Modo de Mezcla HDRI",
+                    "advanced_hdri.mixAppliesToPersonal": "Controlar HDRI Personal con Interfaz",
+                    "separator.advancedPy": "Dependiente de Python",
+                    "advanced_py.overrideShadows": "Py: Sobreescribir Sombras",
+                    "advanced_py.autoRenderSettings": "Py: Ajustar RS Automáticamente",
+                    "advanced_py.overrideGI": "Py: Sobreescribir Iluminación Global",
+                    "advanced_py.overrideAO": "Py: Sobreescribir Oclusión Ambiental"
+                }
+            },
+            "tab.developer": {
+                "name": "DEV",
+                "titleName": "OPCIONES DE DESARROLLADOR",
+                "contains": {
+                    "dev_button.loadToInterface": "Construir Interfaz",
+                    "dev_button.changeVersion": "Actualizar Número de Versión",
+                    "dev_button.cacheLanguages": "Caché de Idiomas",
+                    "dev_button.cacheCredits": "Cache de Creditos",
+                    "dev_button.buildDictionary": "Construir Diccionario de IDs",
+                    "group.debugData": {
+                        "name": "Valores Debug",
+                        "contains": {
+                            "dev_display.presetOptions": "Opciones de Preset (Memoria)",
+                            "dev_display.lightOptions": "Opciones de Luces (Memoria)",
+                            "dev_display.panelOptions": "Opciones de Paneles (Memoria)",
+                            "dev_display.hdriOptions": "Opciones de HDRI (Memoria)"
+                        }
+                    }
+                }
+            }
         },
-        "comments": {
-            "41": "Se necesita activar la Iluminación Global para esta selección de luces",
-            "45": "Se recomienda activar la Oclusión Ambiental para esta selección de luces"
+        "notes": {
+            "display.GINeededWarning": "Se necesita activar la Iluminación Global para esta selección de luces",
+            "display.AORecommendedWarning": "Se recomienda activar la Oclusión Ambiental para esta selección de luces"
+        },
+        "popup": {
+                "cacheLanguagesError": "Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.",
+                "creditsCreated": "Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project."
         },
         "values": {
-            "54": {
+            "presetToggle": {
                 "1": "Activo",
                 "0": "Apagado"
             },
-            "20": {
+            "presetSelector": {
                 "999": "SELECCIONAR UN PRESET"
             },
-            "8": {
+            "selectSetType": {
                 "0": "Universal",
                 "1": "HDRI",
                 "2": "Universal + HDRI",
                 "999": "Desactivado (DEBUG)"
             },
-            "14": {
+            "hdriSelector": {
                 "999": "[Personalizado/Personal]"
             },
-            "13": {
+            "univLightSelector": {
                 "999": "$none"
             },
-            "17": {
+            "univPanelSelector": {
                 "999": "$none"
             },
-            "11": {
+            "univReflectionVisibility": {
                 "0": "Ninguno",
                 "1": "Solo Luces",
                 "2": "Solo Paneles",
                 "3": "Ambos"
             },
-            "64": {
+            "univPanelGI": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "27": {
+            "hdriPreviewReflection": {
                 "1": "Visible",
                 "0": "Oculta"
             },
-            "47": {
+            "hdriGI": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "24": {
+            "hdriMixToggle": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "49": {
+            "hdriMixStartsOn": {
                 "0": "Blanco",
                 "1": "Negro"
             },
-            "4": {
+            "devModeToggle": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "65": {
+            "advanced_hdri.useColorChannel": {
                 "2": "+Color",
                 "1": "Automático",
                 "0": "Solo Luminancia"
             },
-            "2": {
+            "advanced_hdri.mixValueChanges": {
                 "2": "Color",
                 "1": "Luminancia",
                 "0": "Ambos"
             },
-            "42": {
+            "advanced_hdri.mixAppliesToPersonal": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "40": {
+            "advanced_py.overrideShadows": {
+                "1": "Activadas",
+                "0": "Desactivadas",
+                "2": "No Reemplazar"
+            },
+            "advanced_py.autoRenderSettings": {
                 "2": "IG + OA",
                 "1": "IG",
                 "0": "$none"
             },
-            "36": {
+            "advanced_py.overrideGI": {
                 "1": "Activada",
                 "0": "Desactivada",
                 "2": "No Reemplazar"
             },
-            "43": {
+            "advanced_py.overrideAO": {
                 "1": "Activada",
                 "0": "Desactivada",
                 "2": "No Reemplazar"
             },
-            "52": {
+            "univPanelTransparency": {
                 "0": "No",
                 "1": "Solo con Transparencia",
                 "2": "Solo con Refracción",
                 "3": "En Ambas"
             },
-            "56": {
+            "hdriTransparency": {
                 "0": "No",
                 "1": "Solo con Transparencia",
                 "2": "Solo con Refracción",
                 "3": "En Ambas"
-            },
-            "51": {
-                "1": "Activadas",
-                "0": "Desactivadas",
-                "2": "No Reemplazar"
             }
-        },
-        "message": {
-            "cacheLanguagesFailed": "Es imposible hacer un cache de los idiomas en esta version de C4D.\nPrueba a actualizar como minimo a la version R23 de Cinema 4D para que esta funcion este disponible.\n*Esto no significa que el selector de idiomas no funcione con idiomas ya guardados en el cache.",
-            "showCredits": "El nulo con los creditos fue creado exitosamente.\nLos creditos pueden ser leidos en el nulo 'UNITE Credits' que se encuentra en la cima del proyecto."
         }
     }
 }

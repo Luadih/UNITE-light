@@ -1,178 +1,204 @@
 {
     "displayName": "English",
-    "vars": {
+    "variables": {
         "$bool_enabled": "ON",
         "$bool_disabled": "OFF",
         "$none": "None"
     },
-    "content": {
-        "controls": {
-            "-> HOME": "HOME",
-            "#quickSetup": "Quick Setup",
-            "languageSel": "Language",
-            "loadPresets": "Preset Mode",
-            "presetSelection": "Preset",
-            "#mainSystem": "Custom",
-            "selectLightset": "Lightset Type",
-            "#info": "Information",
-            "showCredits": "Show Credits",
-            "currentVersion": "Current Version",
-            "languageCredit": "Translation Credits:",
-
-            "-> UNIVERSAL": "UNIVERSAL",
-            "#uni_general": "General",
-            "uni_showReflections": "Reflections",
-            "#uni_lights": "Lights",
-            "uni_lightSelection": "Lights Selected",
-            "uni_light_GINeeded": "GI Note",
-            "uni_light_AORecommended": "AO Note",
-            "#uni_panels": "Panels",
-            "uni_panelSelection": "Panels Selected",
-            "uni_panel_transparency": "Panels Use Transparency",
-            "uni_panelGI": "Panels Use GI",
-
-            "-> HDRI": "HDRI",
-            "hdri_previewReflection": "Preview Reflection",
-            "hdri_hdriSelection": "HDRI Selected",
-            "hdri_customSelector": "Personal HDRI",
-            "hdri_transparency": "HDRI Use Transparency",
-            "hdri_hdriGI": "HDRI Use GI",
-            "!hdri_custommix": "Custom Mix Options",
-            "hdri_enableCustomMix": "Custom Mix",
-            "hdri_customMixValue": "Mix Strength",
-            "hdri_mixType": "Starting Color",
-
-            "-> ADVANCED SETTINGS": "ADVANCED",
-            "*devMode": "Developer Mode",
-            "#advanced_hdri": "HDRI",
-            "*hdri.FusionMode": "HDRI Fusion Mode",
-            "*hdri.MixMode": "HDRI Mix Mode",
-            "*hdri.HDRIControls": "Control Personal HDRI With UI",
-            "#advanced_py": "Python Dependant",
-            "*py.shadowsControl": "Py: Override Shadows",
-            "*py.adjustRSAuto": "Py: Adjust Render Settings Automatically",
-            "*py.override_GI": "Py: Override Global Illumination",
-            "*py.override_AO": "Py: Override Ambient Occlusion",
-
-            "-> DEVELOPER": "DEV",
-            "*dev.buildInterface": "Build Interface",
-            "*dev.changeReleaseDate": "Update Version Number",
-            "*dev.cacheLanguages": "Cache Languages",
-            "*dev.cacheCredits": "Cache Credits",
-            "*dev.buildDictionary": "Build ID Dictionary",
-            "!debugShowcase": "Debug Showcase",
-            "*dev.presetOptions": "Preset Options (Memory)",
-            "*dev.lightOptions": "Light Options (Memory)",
-            "*dev.panelOptions": "Panel Options (Memory)",
-            "*dev.hdriOptions": "HDRI Options (Memory)"
+    "contains": {
+        "interface": {
+            "tab.home": {
+                "name": "HOME",
+                "contains": {
+                    "separator.quickSetup": "Quick Setup",
+                    "langSelector": "Language",
+                    "presetToggle": "Preset Mode",
+                    "presetSelector": "Preset",
+                    "separator.mainOptions": "Custom",
+                    "selectSetType": "Lightset Type",
+                    "separator.info": "Information",
+                    "button.showCredits": "Show Credits",
+                    "display.version": "Current Version",
+                    "display.langCredit": "Translation Credits:"
+                }
+            },
+            "tab.universal": {
+                "name": "UNIVERSAL",
+                "contains": {
+                    "separator.univGeneral": "General",
+                    "univReflectionVisibility": "Reflections",
+                    "separator.univLights": "Lights",
+                    "univLightSelector": "Lights Selected",
+                    "display.GINeededWarning": "GI Note",
+                    "display.AORecommendedWarning": "AO Note",
+                    "separator.univPanels": "Panels",
+                    "univPanelSelector": "Panels Selected",
+                    "univPanelTransparency": "Panels Use Transparency",
+                    "univPanelGI": "Panels Use GI"
+                }
+            },
+            "tab.hdri": {
+                "name": "HDRI",
+                "contains": {
+                    "hdriPreviewReflection": "Preview Reflection",
+                    "hdriSelector": "HDRI Selected",
+                    "hdriCustomSelector": "Personal HDRI",
+                    "hdriTransparency": "HDRI Use Transparency",
+                    "hdriGI": "HDRI Use GI",
+                    "group.hdriMixOptions": {
+                        "name": "Custom Mix Options",
+                        "contains": {
+                            "hdriMixToggle": "Custom Mix",
+                            "hdriMixValue": "Mix Strength",
+                            "hdriMixStartsOn": "Starting Color"
+                        }
+                    }
+                }
+            },
+            "tab.advanced": {
+                "name": "ADVANCED",
+                "titleName": "ADVANCED SETTINGS",
+                "contains": {
+                    "devModeToggle": "Developer Mode",
+                    "separator.advancedHDRI": "HDRI",
+                    "advanced_hdri.useColorChannel": "HDRI Fusion Mode",
+                    "advanced_hdri.mixValueChanges": "HDRI Mix Mode",
+                    "advanced_hdri.mixAppliesToPersonal": "Control Personal HDRI With UI",
+                    "separator.advancedPy": "Python Dependant",
+                    "advanced_py.overrideShadows": "Py: Override Shadows",
+                    "advanced_py.autoRenderSettings": "Py: Adjust Render Settings Automatically",
+                    "advanced_py.overrideGI": "Py: Override Global Illumination",
+                    "advanced_py.overrideAO": "Py: Override Ambient Occlusion"
+                }
+            },
+            "tab.developer": {
+                "name": "DEV",
+                "titleName": "DEVELOPER",
+                "contains": {
+                    "dev_button.loadToInterface": "Build Interface",
+                    "dev_button.changeVersion": "Update Version Number",
+                    "dev_button.cacheLanguages": "Cache Languages",
+                    "dev_button.cacheCredits": "Cache Credits",
+                    "dev_button.buildDictionary": "Build ID Dictionary",
+                    "group.debugData": {
+                        "name": "Debug Data",
+                        "contains": {
+                            "dev_display.presetOptions": "Preset Options (Memory)",
+                            "dev_display.lightOptions": "Light Options (Memory)",
+                            "dev_display.panelOptions": "Panel Options (Memory)",
+                            "dev_display.hdriOptions": "HDRI Options (Memory)"
+                        }
+                    }
+                }
+            }
         },
-        "comments": {
-            "41": "Global Illumination is needed for this light selection",
-            "45": "Ambient Occlusion is recommended for this light selection"
+        "notes": {
+            "display.GINeededWarning": "Global Illumination is needed for this light selection",
+            "display.AORecommendedWarning": "Ambient Occlusion is recommended for this light selection"
+        },
+        "popup": {
+                "cacheLanguagesError": "Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.",
+                "creditsCreated": "Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project."
         },
         "values": {
-            "54": {
+            "presetToggle": {
                 "1": "Active",
                 "0": "Off"
             },
-            "20": {
+            "presetSelector": {
                 "999": "SELECT A PRESET"
             },
-            "8": {
+            "selectSetType": {
                 "0": "Universal",
                 "1": "HDRI",
                 "2": "Universal + HDRI",
                 "999": "None (DEBUG)"
             },
-            "14": {
+            "hdriSelector": {
                 "999": "[Personal/Custom]"
             },
-            "13": {
+            "univLightSelector": {
                 "999": "$none"
             },
-            "17": {
+            "univPanelSelector": {
                 "999": "$none"
             },
-            "11": {
+            "univReflectionVisibility": {
                 "0": "None",
                 "1": "Lights Only",
                 "2": "Panels Only",
                 "3": "Both"
             },
-            "64": {
+            "univPanelGI": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "27": {
+            "hdriPreviewReflection": {
                 "1": "Visible",
                 "0": "Hidden"
             },
-            "47": {
+            "hdriGI": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "24": {
+            "hdriMixToggle": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "49": {
+            "hdriMixStartsOn": {
                 "0": "White",
                 "1": "Black"
             },
-            "4": {
+            "devModeToggle": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "65": {
+            "advanced_hdri.useColorChannel": {
                 "2": "+Color",
                 "1": "Automated",
                 "0": "Luminance Only"
             },
-            "2": {
+            "advanced_hdri.mixValueChanges": {
                 "2": "Color",
                 "1": "Luminance",
                 "0": "Both"
             },
-            "42": {
+            "advanced_hdri.mixAppliesToPersonal": {
                 "1": "$bool_enabled",
                 "0": "$bool_disabled"
             },
-            "40": {
+            "advanced_py.overrideShadows": {
+                "1": "Enabled",
+                "0": "Disabled",
+                "2": "No Override"
+            },
+            "advanced_py.autoRenderSettings": {
                 "2": "GI + AO",
                 "1": "GI",
                 "0": "$none"
             },
-            "36": {
+            "advanced_py.overrideGI": {
                 "1": "Enabled",
                 "0": "Disabled",
                 "2": "No Override"
             },
-            "43": {
+            "advanced_py.overrideAO": {
                 "1": "Enabled",
                 "0": "Disabled",
                 "2": "No Override"
             },
-            "52": {
+            "univPanelTransparency": {
                 "0": "None",
                 "1": "Transparency Only",
                 "2": "Refraction Only",
                 "3": "Both"
             },
-            "56": {
+            "hdriTransparency": {
                 "0": "None",
                 "1": "Transparency Only",
                 "2": "Refraction Only",
                 "3": "Both"
-            },
-            "51": {
-                "1": "Enabled",
-                "0": "Disabled",
-                "2": "No Override"
             }
-        },
-        "message": {
-            "cacheLanguagesFailed": "Caching Languages doesn't work in this version of C4D.\nTry updating to at least Cinema 4D R23 for caching to work.\n*This doesn't necessarily mean that languages don't get applied by using already cached languages.",
-            "showCredits": "Credits null was properly created.\nThe credits will be readable in the 'UNITE Credits' null at the top of your project."
         }
     }
 }
