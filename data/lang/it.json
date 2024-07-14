@@ -1,0 +1,204 @@
+{
+    "displayName": "Italiano",
+    "credit": "ChatGPT",
+    "variables": {
+        "$bool_enabled": "Attivo",
+        "$bool_disabled": "Disattivo",
+        "$none": "Nessuno"
+    },
+    "contains": {
+        "interface": {
+            "tab.home": {
+                "name": "HOME",
+                "contains": {
+                    "separator.quickSetup": "Impostazione Veloce",
+                    "langSelector": "Lingua",
+                    "presetToggle": "Modalità Preset",
+                    "presetSelector": "Preset",
+                    "separator.mainOptions": "Personalizzato",
+                    "selectSetType": "Tipo di Set Luci",
+                    "separator.info": "Informazioni",
+                    "button.showCredits": "Mostra Crediti",
+                    "display.version": "Versione Corrente",
+                    "display.langCredit": "Crediti Traduzione:"
+                }
+            },
+            "tab.universal": {
+                "name": "UNIVERSALE",
+                "contains": {
+                    "separator.univGeneral": "Generale",
+                    "univReflectionVisibility": "Riflessioni",
+                    "separator.univLights": "Luci",
+                    "univLightSelector": "Luci Selezionate",
+                    "display.GINeededWarning": "Nota GI Necessaria",
+                    "display.AORecommendedWarning": "Nota AO Raccomandata",
+                    "separator.univPanels": "Pannelli",
+                    "univPanelSelector": "Pannelli Selezionati",
+                    "univPanelTransparency": "Trasparenza Pannelli",
+                    "univPanelGI": "Utilizzo GI Pannelli"
+                }
+            },
+            "tab.hdri": {
+                "name": "HDRI",
+                "contains": {
+                    "hdriPreviewReflection": "Anteprima Riflessione",
+                    "hdriSelector": "HDRI Selezionato",
+                    "hdriCustomSelector": "HDRI Personale",
+                    "hdriTransparency": "Utilizzo Trasparenza HDRI",
+                    "hdriGI": "Utilizzo GI HDRI",
+                    "group.hdriMixOptions": {
+                        "name": "Opzioni Mix Personalizzato",
+                        "contains": {
+                            "hdriMixToggle": "Mix Personalizzato",
+                            "hdriMixValue": "Forza Mix",
+                            "hdriMixStartsOn": "Colore Iniziale"
+                        }
+                    }
+                }
+            },
+            "tab.advanced": {
+                "name": "AVANZATE",
+                "titleName": "IMPOSTAZIONI AVANZATE",
+                "contains": {
+                    "devModeToggle": "Modalità Sviluppatore",
+                    "separator.advancedHDRI": "HDRI",
+                    "advanced_hdri.useColorChannel": "Modalità Fusione HDRI",
+                    "advanced_hdri.mixValueChanges": "Modalità Mix HDRI",
+                    "advanced_hdri.mixAppliesToPersonal": "Controllo HDRI Personale tramite UI",
+                    "separator.advancedPy": "Dipendente Python",
+                    "advanced_py.overrideShadows": "Py: Sovrascrivi Ombre",
+                    "advanced_py.autoRenderSettings": "Py: Regola Impostazioni Render Automaticamente",
+                    "advanced_py.overrideGI": "Py: Sovrascrivi Illuminazione Globale",
+                    "advanced_py.overrideAO": "Py: Sovrascrivi Osservazione Ambientale"
+                }
+            },
+            "tab.developer": {
+                "name": "SVILUPPATORE",
+                "contains": {
+                    "dev_button.loadToInterface": "Costruisci Interfaccia",
+                    "dev_button.changeVersion": "Aggiorna Numero Versione",
+                    "dev_button.cacheLanguages": "Cache Lingue",
+                    "dev_button.cacheCredits": "Cache Crediti",
+                    "dev_button.buildDictionary": "Costruisci Dizionario ID",
+                    "group.debugData": {
+                        "name": "Dati Debug",
+                        "contains": {
+                            "dev_display.presetOptions": "Opzioni Preset (Memoria)",
+                            "dev_display.lightOptions": "Opzioni Luce (Memoria)",
+                            "dev_display.panelOptions": "Opzioni Pannello (Memoria)",
+                            "dev_display.hdriOptions": "Opzioni HDRI (Memoria)"
+                        }
+                    }
+                }
+            }
+        },
+        "notes": {
+            "display.GINeededWarning": "L'illuminazione globale è necessaria per questa selezione di luci",
+            "display.AORecommendedWarning": "L'occlusione ambientale è consigliata per questa selezione di luci"
+        },
+        "popup": {
+            "cacheLanguagesError": "Il caching delle lingue non funziona in questa versione di C4D.\nProva a aggiornare almeno a Cinema 4D R23 perché il caching funzioni.\n*Questo non significa necessariamente che le lingue non vengano applicate utilizzando le lingue già in cache.",
+            "creditsCreated": "I crediti null sono stati creati correttamente.\nI crediti saranno leggibili nel null 'UNITE Credits' in cima al tuo progetto."
+        },
+        "values": {
+            "presetToggle": {
+                "1": "Attivo",
+                "0": "Disattivo"
+            },
+            "presetSelector": {
+                "999": "SELEZIONA UN PRESET"
+            },
+            "selectSetType": {
+                "0": "Universale",
+                "1": "HDRI",
+                "2": "Universale + HDRI",
+                "999": "Nessuno (DEBUG)"
+            },
+            "hdriSelector": {
+                "999": "[Personale/Personalizzato]"
+            },
+            "univLightSelector": {
+                "999": "$none"
+            },
+            "univPanelSelector": {
+                "999": "$none"
+            },
+            "univReflectionVisibility": {
+                "0": "Nessuno",
+                "1": "Solo Luci",
+                "2": "Solo Pannelli",
+                "3": "Entrambi"
+            },
+            "univPanelGI": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriPreviewReflection": {
+                "1": "Visibile",
+                "0": "Nascosto"
+            },
+            "hdriGI": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriMixToggle": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriMixStartsOn": {
+                "0": "Bianco",
+                "1": "Nero"
+            },
+            "devModeToggle": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "advanced_hdri.useColorChannel": {
+                "2": "+Colore",
+                "1": "Automatico",
+                "0": "Solo Luminanza"
+            },
+            "advanced_hdri.mixValueChanges": {
+                "2": "Colore",
+                "1": "Luminanza",
+                "0": "Entrambi"
+            },
+            "advanced_hdri.mixAppliesToPersonal": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "advanced_py.overrideShadows": {
+                "1": "Abilitato",
+                "0": "Disabilitato",
+                "2": "Nessuna Sovrapposizione"
+            },
+            "advanced_py.autoRenderSettings": {
+                "2": "GI + AO",
+                "1": "GI",
+                "0": "$none"
+            },
+            "advanced_py.overrideGI": {
+                "1": "Abilitato",
+                "0": "Disabilitato",
+                "2": "Nessuna Sovrapposizione"
+            },
+            "advanced_py.overrideAO": {
+                "1": "Abilitato",
+                "0": "Disabilitato",
+                "2": "Nessuna Sovrapposizione"
+            },
+            "univPanelTransparency": {
+                "0": "Nessuno",
+                "1": "Solo Trasparenza",
+                "2": "Solo Rifrazione",
+                "3": "Entrambi"
+            },
+            "hdriTransparency": {
+                "0": "Nessuno",
+                "1": "Solo Trasparenza",
+                "2": "Solo Rifrazione",
+                "3": "Entrambi"
+            }
+        }
+    }
+}

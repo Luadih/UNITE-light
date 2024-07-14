@@ -1,0 +1,205 @@
+{
+    "displayName": "日本語",
+    "credit": "ChatGPT",
+    "variables": {
+        "$bool_enabled": "オン",
+        "$bool_disabled": "オフ",
+        "$none": "なし"
+    },
+    "contains": {
+        "interface": {
+            "tab.home": {
+                "name": "ホーム",
+                "contains": {
+                    "separator.quickSetup": "クイックセットアップ",
+                    "langSelector": "言語",
+                    "presetToggle": "プリセットモード",
+                    "presetSelector": "プリセット",
+                    "separator.mainOptions": "カスタム",
+                    "selectSetType": "ライトセットタイプ",
+                    "separator.info": "情報",
+                    "button.showCredits": "クレジットを表示",
+                    "display.version": "現在のバージョン",
+                    "display.langCredit": "翻訳クレジット:"
+                }
+            },
+            "tab.universal": {
+                "name": "ユニバーサル",
+                "contains": {
+                    "separator.univGeneral": "一般",
+                    "univReflectionVisibility": "反射",
+                    "separator.univLights": "ライト",
+                    "univLightSelector": "選択されたライト",
+                    "display.GINeededWarning": "GIが必要です",
+                    "display.AORecommendedWarning": "AOが推奨されます",
+                    "separator.univPanels": "パネル",
+                    "univPanelSelector": "選択されたパネル",
+                    "univPanelTransparency": "パネルは透明度を使用",
+                    "univPanelGI": "パネルはGIを使用"
+                }
+            },
+            "tab.hdri": {
+                "name": "HDRI",
+                "contains": {
+                    "hdriPreviewReflection": "プレビュー反射",
+                    "hdriSelector": "選択されたHDRI",
+                    "hdriCustomSelector": "個人用HDRI",
+                    "hdriTransparency": "HDRIは透明度を使用",
+                    "hdriGI": "HDRIはGIを使用",
+                    "group.hdriMixOptions": {
+                        "name": "カスタムミックスオプション",
+                        "contains": {
+                            "hdriMixToggle": "カスタムミックス",
+                            "hdriMixValue": "ミックス強度",
+                            "hdriMixStartsOn": "開始色"
+                        }
+                    }
+                }
+            },
+            "tab.advanced": {
+                "name": "高度な",
+                "titleName": "高度な設定",
+                "contains": {
+                    "devModeToggle": "開発者モード",
+                    "separator.advancedHDRI": "HDRI",
+                    "advanced_hdri.useColorChannel": "HDRI融合モード",
+                    "advanced_hdri.mixValueChanges": "HDRIミックスモード",
+                    "advanced_hdri.mixAppliesToPersonal": "UIで個人用HDRIを制御",
+                    "separator.advancedPy": "Python依存",
+                    "advanced_py.overrideShadows": "Py: シャドウのオーバーライド",
+                    "advanced_py.autoRenderSettings": "Py: レンダリング設定の自動調整",
+                    "advanced_py.overrideGI": "Py: グローバルイルミネーションのオーバーライド",
+                    "advanced_py.overrideAO": "Py: アンビエントオクルージョンのオーバーライド"
+                }
+            },
+            "tab.developer": {
+                "name": "開発者",
+                "titleName": "開発者",
+                "contains": {
+                    "dev_button.loadToInterface": "インターフェースのビルド",
+                    "dev_button.changeVersion": "バージョン番号の更新",
+                    "dev_button.cacheLanguages": "言語のキャッシュ",
+                    "dev_button.cacheCredits": "クレジットのキャッシュ",
+                    "dev_button.buildDictionary": "ID辞書の構築",
+                    "group.debugData": {
+                        "name": "デバッグデータ",
+                        "contains": {
+                            "dev_display.presetOptions": "プリセットオプション（メモリ）",
+                            "dev_display.lightOptions": "ライトオプション（メモリ）",
+                            "dev_display.panelOptions": "パネルオプション（メモリ）",
+                            "dev_display.hdriOptions": "HDRIオプション（メモリ）"
+                        }
+                    }
+                }
+            }
+        },
+        "notes": {
+            "display.GINeededWarning": "このライト選択にはグローバルイルミネーション（GI）が必要です",
+            "display.AORecommendedWarning": "このライト選択にはアンビエントオクルージョン（AO）が推奨されます"
+        },
+        "popup": {
+            "cacheLanguagesError": "このバージョンのC4Dでは言語のキャッシュが機能しません。\nCinema 4D R23以上にアップデートしてキャッシュが機能するようにしてください。\n*これは既にキャッシュされた言語を使用することで言語が適用されないという意味ではありません。",
+            "creditsCreated": "クレジットnullが正しく作成されました。\nクレジットはプロジェクトの上部にある「UNITE Credits」nullで読み取れます。"
+        },
+        "values": {
+            "presetToggle": {
+                "1": "アクティブ",
+                "0": "オフ"
+            },
+            "presetSelector": {
+                "999": "プリセットを選択"
+            },
+            "selectSetType": {
+                "0": "ユニバーサル",
+                "1": "HDRI",
+                "2": "ユニバーサル + HDRI",
+                "999": "なし（デバッグ）"
+            },
+            "hdriSelector": {
+                "999": "[個人用/カスタム]"
+            },
+            "univLightSelector": {
+                "999": "$none"
+            },
+            "univPanelSelector": {
+                "999": "$none"
+            },
+            "univReflectionVisibility": {
+                "0": "なし",
+                "1": "ライトのみ",
+                "2": "パネルのみ",
+                "3": "両方"
+            },
+            "univPanelGI": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriPreviewReflection": {
+                "1": "表示",
+                "0": "非表示"
+            },
+            "hdriGI": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriMixToggle": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriMixStartsOn": {
+                "0": "白",
+                "1": "黒"
+            },
+            "devModeToggle": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "advanced_hdri.useColorChannel": {
+                "2": "+カラー",
+                "1": "自動",
+                "0": "輝度のみ"
+            },
+            "advanced_hdri.mixValueChanges": {
+                "2": "カラー",
+                "1": "輝度",
+                "0": "両方"
+            },
+            "advanced_hdri.mixAppliesToPersonal": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "advanced_py.overrideShadows": {
+                "1": "有効",
+                "0": "無効",
+                "2": "オーバーライドなし"
+            },
+            "advanced_py.autoRenderSettings": {
+                "2": "GI + AO",
+                "1": "GI",
+                "0": "$none"
+            },
+            "advanced_py.overrideGI": {
+                "1": "有効",
+                "0": "無効",
+                "2": "オーバーライドなし"
+            },
+            "advanced_py.overrideAO": {
+                "1": "有効",
+                "0": "無効",
+                "2": "オーバーライドなし"
+            },
+            "univPanelTransparency": {
+                "0": "なし",
+                "1": "透明度のみ",
+                "2": "屈折のみ",
+                "3": "両方"
+            },
+            "hdriTransparency": {
+                "0": "なし",
+                "1": "透明度のみ",
+                "2": "屈折のみ",
+                "3": "両方"
+            }
+        }
+    }
+}

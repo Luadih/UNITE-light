@@ -1,0 +1,204 @@
+{
+    "displayName": "Bahasa Indonesia",
+    "credit": "ChatGPT",
+    "variables": {
+        "$bool_enabled": "Aktif",
+        "$bool_disabled": "Nonaktif",
+        "$none": "Tidak Ada"
+    },
+    "contains": {
+        "interface": {
+            "tab.home": {
+                "name": "BERANDA",
+                "contains": {
+                    "separator.quickSetup": "Pengaturan Cepat",
+                    "langSelector": "Bahasa",
+                    "presetToggle": "Mode Preset",
+                    "presetSelector": "Preset",
+                    "separator.mainOptions": "Kustom",
+                    "selectSetType": "Jenis Set Lampu",
+                    "separator.info": "Informasi",
+                    "button.showCredits": "Tampilkan Kredit",
+                    "display.version": "Versi Saat Ini",
+                    "display.langCredit": "Kredit Terjemahan:"
+                }
+            },
+            "tab.universal": {
+                "name": "UNIVERSAL",
+                "contains": {
+                    "separator.univGeneral": "Umum",
+                    "univReflectionVisibility": "Refleksi",
+                    "separator.univLights": "Lampu",
+                    "univLightSelector": "Lampu Dipilih",
+                    "display.GINeededWarning": "Catatan GI Diperlukan",
+                    "display.AORecommendedWarning": "Catatan AO Direkomendasikan",
+                    "separator.univPanels": "Panel",
+                    "univPanelSelector": "Panel Dipilih",
+                    "univPanelTransparency": "Panel Gunakan Transparansi",
+                    "univPanelGI": "Panel Gunakan GI"
+                }
+            },
+            "tab.hdri": {
+                "name": "HDRI",
+                "contains": {
+                    "hdriPreviewReflection": "Pratinjau Refleksi",
+                    "hdriSelector": "HDRI Dipilih",
+                    "hdriCustomSelector": "HDRI Pribadi",
+                    "hdriTransparency": "HDRI Gunakan Transparansi",
+                    "hdriGI": "HDRI Gunakan GI",
+                    "group.hdriMixOptions": {
+                        "name": "Opsi Campuran Kustom",
+                        "contains": {
+                            "hdriMixToggle": "Campuran Kustom",
+                            "hdriMixValue": "Kekuatan Campuran",
+                            "hdriMixStartsOn": "Warna Awal"
+                        }
+                    }
+                }
+            },
+            "tab.advanced": {
+                "name": "TINGKAT LANJUT",
+                "titleName": "PENGATURAN LANJUT",
+                "contains": {
+                    "devModeToggle": "Mode Pengembang",
+                    "separator.advancedHDRI": "HDRI",
+                    "advanced_hdri.useColorChannel": "Mode Fusi HDRI",
+                    "advanced_hdri.mixValueChanges": "Mode Campuran HDRI",
+                    "advanced_hdri.mixAppliesToPersonal": "Kontrol HDRI Pribadi dengan UI",
+                    "separator.advancedPy": "Tergantung Python",
+                    "advanced_py.overrideShadows": "Py: Timpa Bayangan",
+                    "advanced_py.autoRenderSettings": "Py: Sesuaikan Pengaturan Render Otomatis",
+                    "advanced_py.overrideGI": "Py: Timpa Iluminasi Global",
+                    "advanced_py.overrideAO": "Py: Timpa Okslusi Ambient"
+                }
+            },
+            "tab.developer": {
+                "name": "PENGEMBANG",
+                "contains": {
+                    "dev_button.loadToInterface": "Bangun Antarmuka",
+                    "dev_button.changeVersion": "Perbarui Nomor Versi",
+                    "dev_button.cacheLanguages": "Cache Bahasa",
+                    "dev_button.cacheCredits": "Cache Kredit",
+                    "dev_button.buildDictionary": "Bangun Kamus ID",
+                    "group.debugData": {
+                        "name": "Data Debug",
+                        "contains": {
+                            "dev_display.presetOptions": "Opsi Preset (Memori)",
+                            "dev_display.lightOptions": "Opsi Lampu (Memori)",
+                            "dev_display.panelOptions": "Opsi Panel (Memori)",
+                            "dev_display.hdriOptions": "Opsi HDRI (Memori)"
+                        }
+                    }
+                }
+            }
+        },
+        "notes": {
+            "display.GINeededWarning": "Diperlukan Global Illumination untuk pemilihan cahaya ini",
+            "display.AORecommendedWarning": "Disarankan Ambient Occlusion untuk pemilihan cahaya ini"
+        },
+        "popup": {
+            "cacheLanguagesError": "Penyimpanan cache bahasa tidak berfungsi dalam versi C4D ini.\nCoba perbarui setidaknya Cinema 4D R23 agar penyimpanan cache berfungsi.\n*Ini tidak berarti bahwa bahasa tidak diterapkan dengan menggunakan bahasa yang sudah di-cache.",
+            "creditsCreated": "Kredit null telah dibuat dengan benar.\nKredit akan dapat dibaca di nol 'UNITE Credits' di bagian atas proyek Anda."
+        },
+        "values": {
+            "presetToggle": {
+                "1": "Aktif",
+                "0": "Nonaktif"
+            },
+            "presetSelector": {
+                "999": "PILIHAN PRESET"
+            },
+            "selectSetType": {
+                "0": "Universal",
+                "1": "HDRI",
+                "2": "Universal + HDRI",
+                "999": "Tidak Ada (DEBUG)"
+            },
+            "hdriSelector": {
+                "999": "[Pribadi/Kustom]"
+            },
+            "univLightSelector": {
+                "999": "$none"
+            },
+            "univPanelSelector": {
+                "999": "$none"
+            },
+            "univReflectionVisibility": {
+                "0": "Tidak Ada",
+                "1": "Hanya Lampu",
+                "2": "Hanya Panel",
+                "3": "Keduanya"
+            },
+            "univPanelGI": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriPreviewReflection": {
+                "1": "Terlihat",
+                "0": "Tersembunyi"
+            },
+            "hdriGI": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriMixToggle": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "hdriMixStartsOn": {
+                "0": "Putih",
+                "1": "Hitam"
+            },
+            "devModeToggle": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "advanced_hdri.useColorChannel": {
+                "2": "+Warna",
+                "1": "Otomatis",
+                "0": "Hanya Luminansi"
+            },
+            "advanced_hdri.mixValueChanges": {
+                "2": "Warna",
+                "1": "Luminansi",
+                "0": "Keduanya"
+            },
+            "advanced_hdri.mixAppliesToPersonal": {
+                "1": "$bool_enabled",
+                "0": "$bool_disabled"
+            },
+            "advanced_py.overrideShadows": {
+                "1": "Aktif",
+                "0": "Nonaktif",
+                "2": "Tidak Ada Penggantian"
+            },
+            "advanced_py.autoRenderSettings": {
+                "2": "GI + AO",
+                "1": "GI",
+                "0": "$none"
+            },
+            "advanced_py.overrideGI": {
+                "1": "Aktif",
+                "0": "Nonaktif",
+                "2": "Tidak Ada Penggantian"
+            },
+            "advanced_py.overrideAO": {
+                "1": "Aktif",
+                "0": "Nonaktif",
+                "2": "Tidak Ada Penggantian"
+            },
+            "univPanelTransparency": {
+                "0": "Tidak Ada",
+                "1": "Hanya Transparansi",
+                "2": "Hanya Refraksi",
+                "3": "Keduanya"
+            },
+            "hdriTransparency": {
+                "0": "Tidak Ada",
+                "1": "Hanya Transparansi",
+                "2": "Hanya Refraksi",
+                "3": "Keduanya"
+            }
+        }
+    }
+}
